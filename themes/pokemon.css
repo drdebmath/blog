@@ -1,0 +1,52 @@
+/* Pokémon-inspired: Poké Ball red and white, Pikachu yellow, water-type blue. */
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono&display=swap");
+:root {
+  --light: #ffcb05;
+  --bg: #f4f6f9; --fg: #1f2330; --muted: #5d6475; --card: #ffffff;
+  --accent: #d0300e; --accent2: #1f6fb2; --yellow: #ffcb05; --ink: #222;
+  --human: #1f6fb2; --collab: #d0300e; --ai: #6b4bb0;
+  --display: "Fredoka", sans-serif; --body: "Nunito", sans-serif; --mono: "JetBrains Mono", monospace;
+  --size: 18px; --radius: 14px; --border: 2px solid #e3e6ec; --shadow: 0 4px 0 #e3e6ec;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14161c; --fg: #eef0f5; --muted: #a2a8b6; --card: #1f232c;
+    --accent: #ff6b4a; --accent2: #5cc0f0; --ink: #0b0c10;
+    --human: #5cc0f0; --collab: #ff8a70; --ai: #b9a2f5;
+    --border: 2px solid #2c313c; --shadow: 0 4px 0 #2c313c;
+  }
+}
+
+/* Header as the top half of a Poké Ball: red, black band, white button. */
+header { padding: 1rem 1.4rem; border-radius: var(--radius); background: linear-gradient(#e3350d, #c62a0c);
+         border-bottom: 6px solid var(--ink); }
+.logo, nav a { color: #fff; }
+h1 { font-weight: 700; }
+h2 { width: fit-content; padding: 0 .4rem; margin-left: -.4rem; border-radius: 6px;
+     background: linear-gradient(transparent 60%, color-mix(in srgb, var(--yellow) 55%, transparent) 60%); }
+.index a:hover, .index a:focus-visible { box-shadow: 0 4px 0 var(--yellow); border-color: var(--yellow); }
+blockquote { border-left-color: var(--yellow); }
+pre { border-top: 4px solid var(--accent2); }
+
+/* Background glyphs: Poké Balls and electric/fire/water/grass type symbols (original drawings), in two strips at
+   the page edges. Only shown where the gutters are wide enough, so they never sit behind text. */
+:root { --glyphs: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='440' opacity='0.32'%3E%3Cg transform='translate(60 50) rotate(-15)'%3E%3Cpath d='M-26 0a26 26 0 0 1 52 0z' fill='%23e3350d'/%3E%3Cpath d='M-26 0a26 26 0 0 0 52 0z' fill='%23ffffff'/%3E%3Ccircle r='26' fill='none' stroke='%23222' stroke-width='3.7'/%3E%3Cpath d='M-26 0H26' stroke='%23222' stroke-width='4.3'/%3E%3Ccircle r='8.1' fill='%23ffffff' stroke='%23222' stroke-width='3.2'/%3E%3C/g%3E%3Cpath transform='translate(165 95) rotate(12) scale(1.6)' d='M4-18L-10 3H0L-4 18L10-3H0z' fill='%23f7c600'/%3E%3Cpath transform='translate(45 160) rotate(-10) scale(1.4)' d='M0-18C6-8 12-2 12 6A12 12 0 0 1-12 6C-12-2-6-8 0-18z' fill='%233d8fe0'/%3E%3Cg transform='translate(170 215) rotate(20)'%3E%3Cpath d='M-16 0a16 16 0 0 1 32 0z' fill='%23e3350d'/%3E%3Cpath d='M-16 0a16 16 0 0 0 32 0z' fill='%23ffffff'/%3E%3Ccircle r='16' fill='none' stroke='%23222' stroke-width='2.3'/%3E%3Cpath d='M-16 0H16' stroke='%23222' stroke-width='2.7'/%3E%3Ccircle r='5.0' fill='%23ffffff' stroke='%23222' stroke-width='2.0'/%3E%3C/g%3E%3Cpath transform='translate(80 265) rotate(8) scale(1.6)' d='M0-18C6-10 12-4 12 5A12 12 0 0 1-12 5C-12-2-6-5-4-12C-2-6 0-4 2-3C3-8 1-13 0-18z' fill='%23ee6b2f'/%3E%3Cpath transform='translate(175 330) rotate(0) scale(1.4)' d='M-12 12C-14-6-2-16 14-16C14 2 4 14-12 12zM-12 12L6-6' fill='%2348b04a' stroke='%232f7d32' stroke-width='1.5'/%3E%3Cg transform='translate(55 385) rotate(35)'%3E%3Cpath d='M-20 0a20 20 0 0 1 40 0z' fill='%23e3350d'/%3E%3Cpath d='M-20 0a20 20 0 0 0 40 0z' fill='%23ffffff'/%3E%3Ccircle r='20' fill='none' stroke='%23222' stroke-width='2.9'/%3E%3Cpath d='M-20 0H20' stroke='%23222' stroke-width='3.3'/%3E%3Ccircle r='6.2' fill='%23ffffff' stroke='%23222' stroke-width='2.5'/%3E%3C/g%3E%3Cpath transform='translate(150 420) rotate(-18) scale(1.1)' d='M4-18L-10 3H0L-4 18L10-3H0z' fill='%23f7c600'/%3E%3C/svg%3E"); }
+@media (prefers-color-scheme: dark) { :root { --glyphs: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='440' opacity='0.3'%3E%3Cg transform='translate(60 50) rotate(-15)'%3E%3Cpath d='M-26 0a26 26 0 0 1 52 0z' fill='%23ff5a3c'/%3E%3Cpath d='M-26 0a26 26 0 0 0 52 0z' fill='%23e8e8e8'/%3E%3Ccircle r='26' fill='none' stroke='%230b0c10' stroke-width='3.7'/%3E%3Cpath d='M-26 0H26' stroke='%230b0c10' stroke-width='4.3'/%3E%3Ccircle r='8.1' fill='%23e8e8e8' stroke='%230b0c10' stroke-width='3.2'/%3E%3C/g%3E%3Cpath transform='translate(165 95) rotate(12) scale(1.6)' d='M4-18L-10 3H0L-4 18L10-3H0z' fill='%23f7c600'/%3E%3Cpath transform='translate(45 160) rotate(-10) scale(1.4)' d='M0-18C6-8 12-2 12 6A12 12 0 0 1-12 6C-12-2-6-8 0-18z' fill='%233d8fe0'/%3E%3Cg transform='translate(170 215) rotate(20)'%3E%3Cpath d='M-16 0a16 16 0 0 1 32 0z' fill='%23ff5a3c'/%3E%3Cpath d='M-16 0a16 16 0 0 0 32 0z' fill='%23e8e8e8'/%3E%3Ccircle r='16' fill='none' stroke='%230b0c10' stroke-width='2.3'/%3E%3Cpath d='M-16 0H16' stroke='%230b0c10' stroke-width='2.7'/%3E%3Ccircle r='5.0' fill='%23e8e8e8' stroke='%230b0c10' stroke-width='2.0'/%3E%3C/g%3E%3Cpath transform='translate(80 265) rotate(8) scale(1.6)' d='M0-18C6-10 12-4 12 5A12 12 0 0 1-12 5C-12-2-6-5-4-12C-2-6 0-4 2-3C3-8 1-13 0-18z' fill='%23ee6b2f'/%3E%3Cpath transform='translate(175 330) rotate(0) scale(1.4)' d='M-12 12C-14-6-2-16 14-16C14 2 4 14-12 12zM-12 12L6-6' fill='%2348b04a' stroke='%232f7d32' stroke-width='1.5'/%3E%3Cg transform='translate(55 385) rotate(35)'%3E%3Cpath d='M-20 0a20 20 0 0 1 40 0z' fill='%23ff5a3c'/%3E%3Cpath d='M-20 0a20 20 0 0 0 40 0z' fill='%23e8e8e8'/%3E%3Ccircle r='20' fill='none' stroke='%230b0c10' stroke-width='2.9'/%3E%3Cpath d='M-20 0H20' stroke='%230b0c10' stroke-width='3.3'/%3E%3Ccircle r='6.2' fill='%23e8e8e8' stroke='%230b0c10' stroke-width='2.5'/%3E%3C/g%3E%3Cpath transform='translate(150 420) rotate(-18) scale(1.1)' d='M4-18L-10 3H0L-4 18L10-3H0z' fill='%23f7c600'/%3E%3C/svg%3E"); } }
+html { background: var(--bg); }
+body { background: none; }
+/* Strips live only in the gutters beside the text column, sized to fit them. */
+@media (min-width: 62rem) {
+  html { --strip: min(220px, calc((100vw - var(--measure)) / 2 - 2rem));
+         background: var(--glyphs) left 1rem top 0 / var(--strip) repeat-y,
+                     var(--glyphs) right 1rem top 220px / var(--strip) repeat-y, var(--bg);
+         background-attachment: fixed; }
+}
+#mode { color: #fff; }
+:root { --ribbon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='44' opacity='0.55'%3E%3Cg transform='translate(24 22)'%3E%3Cpath d='M-16 0a16 16 0 0 1 32 0z' fill='%23e3350d'/%3E%3Cpath d='M-16 0a16 16 0 0 0 32 0z' fill='%23ffffff'/%3E%3Ccircle r='16' fill='none' stroke='%23222' stroke-width='2.3'/%3E%3Cpath d='M-16 0H16' stroke='%23222' stroke-width='2.7'/%3E%3Ccircle r='5.0' fill='%23ffffff' stroke='%23222' stroke-width='2.0'/%3E%3C/g%3E%3Cpath transform='translate(70 22) scale(1)' d='M4-18L-10 3H0L-4 18L10-3H0z' fill='%23f7c600'/%3E%3Cpath transform='translate(112 22) scale(1)' d='M0-18C6-10 12-4 12 5A12 12 0 0 1-12 5C-12-2-6-5-4-12C-2-6 0-4 2-3C3-8 1-13 0-18z' fill='%23ee6b2f'/%3E%3Cg transform='translate(158 22)'%3E%3Cpath d='M-12 0a12 12 0 0 1 24 0z' fill='%23e3350d'/%3E%3Cpath d='M-12 0a12 12 0 0 0 24 0z' fill='%23ffffff'/%3E%3Ccircle r='12' fill='none' stroke='%23222' stroke-width='1.7'/%3E%3Cpath d='M-12 0H12' stroke='%23222' stroke-width='2.0'/%3E%3Ccircle r='3.8' fill='%23ffffff' stroke='%23222' stroke-width='1.5'/%3E%3C/g%3E%3Cpath transform='translate(202 22) scale(1)' d='M0-18C6-8 12-2 12 6A12 12 0 0 1-12 6C-12-2-6-8 0-18z' fill='%233d8fe0'/%3E%3Cpath transform='translate(246 22) scale(1)' d='M-12 12C-14-6-2-16 14-16C14 2 4 14-12 12z' fill='%2348b04a'/%3E%3C/svg%3E"); }
+@media (prefers-color-scheme: dark) { :root { --ribbon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='44' opacity='0.5'%3E%3Cg transform='translate(24 22)'%3E%3Cpath d='M-16 0a16 16 0 0 1 32 0z' fill='%23ff5a3c'/%3E%3Cpath d='M-16 0a16 16 0 0 0 32 0z' fill='%23e8e8e8'/%3E%3Ccircle r='16' fill='none' stroke='%230b0c10' stroke-width='2.3'/%3E%3Cpath d='M-16 0H16' stroke='%230b0c10' stroke-width='2.7'/%3E%3Ccircle r='5.0' fill='%23e8e8e8' stroke='%230b0c10' stroke-width='2.0'/%3E%3C/g%3E%3Cpath transform='translate(70 22) scale(1)' d='M4-18L-10 3H0L-4 18L10-3H0z' fill='%23f7c600'/%3E%3Cpath transform='translate(112 22) scale(1)' d='M0-18C6-10 12-4 12 5A12 12 0 0 1-12 5C-12-2-6-5-4-12C-2-6 0-4 2-3C3-8 1-13 0-18z' fill='%23ee6b2f'/%3E%3Cg transform='translate(158 22)'%3E%3Cpath d='M-12 0a12 12 0 0 1 24 0z' fill='%23ff5a3c'/%3E%3Cpath d='M-12 0a12 12 0 0 0 24 0z' fill='%23e8e8e8'/%3E%3Ccircle r='12' fill='none' stroke='%230b0c10' stroke-width='1.7'/%3E%3Cpath d='M-12 0H12' stroke='%230b0c10' stroke-width='2.0'/%3E%3Ccircle r='3.8' fill='%23e8e8e8' stroke='%230b0c10' stroke-width='1.5'/%3E%3C/g%3E%3Cpath transform='translate(202 22) scale(1)' d='M0-18C6-8 12-2 12 6A12 12 0 0 1-12 6C-12-2-6-8 0-18z' fill='%233d8fe0'/%3E%3Cpath transform='translate(246 22) scale(1)' d='M-12 12C-14-6-2-16 14-16C14 2 4 14-12 12z' fill='%2348b04a'/%3E%3C/svg%3E"); } }
+/* Small screens: no room beside the text, so the glyphs move to a ribbon under the header and above the footer. */
+@media (max-width: 62rem) {
+  main::before, main::after { content: ""; display: block; height: 40px; background: var(--ribbon) repeat-x left center / auto 100%; }
+  main::before { margin: -1rem 0 1.8rem; }
+  main::after { margin: 2.5rem 0 0; }
+}

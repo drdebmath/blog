@@ -1,0 +1,114 @@
+/* Readable layout. Colors, fonts and flourishes come from the theme file (themes/*.css). */
+:root { --radius: 0; --shadow: none; --border: 1px solid var(--muted); --size: 17px; --measure: 44rem;
+        --human: var(--fg); --collab: var(--accent); --ai: var(--accent2); }
+* { box-sizing: border-box; }
+body { margin: 0 auto; max-width: var(--measure); padding: 1.5rem 1.25rem 3rem;
+       background: var(--bg); color: var(--fg); font: var(--size)/1.75 var(--body);
+       -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); text-underline-offset: .2em; }
+::selection { background: var(--accent); color: var(--bg); }
+
+header { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; align-items: center;
+         margin-bottom: 2.5rem; }
+.logo { display: inline-flex; align-items: center; gap: .5rem; font: 700 1.5rem var(--display); color: var(--fg); text-decoration: none; }
+.robot { width: 1.7em; height: 1.7em; flex: none; }
+.brand { display: flex; flex-direction: column; line-height: 1.2; }
+#tagline { font: 500 .52em/1.3 var(--body); opacity: .85; }
+#tagline:empty { display: none; }
+.robot .light { fill: var(--light, var(--accent)); }
+nav { display: flex; gap: 1.2rem; }
+.header-right { display: flex; align-items: center; gap: 1rem; }
+#mode { width: 2rem; height: 2rem; padding: 0; border: 1.5px solid currentColor; border-radius: 50%;
+        background: none; color: inherit; font-size: 1rem; line-height: 1; cursor: pointer; }
+nav a { font-family: var(--display); color: var(--fg); }
+
+h1, h2, h3 { font-family: var(--display); line-height: 1.3; }
+h1 { font-size: 2.2rem; margin: .2em 0 .8em; }
+h2 { font-size: 1.55rem; margin-top: 2.8rem; }
+h3 { font-size: 1.2rem; margin-top: 2rem; }
+time { color: var(--muted); font-size: .9rem; }
+
+.index { list-style: none; padding: 0; }
+.index a { display: flex; flex-wrap: wrap; gap: 0 1rem; align-items: baseline; padding: 1rem 1.2rem; margin-bottom: 1rem;
+           color: var(--fg); text-decoration: none; background: var(--card); border: var(--border);
+           border-radius: var(--radius); box-shadow: var(--shadow); transition: transform .15s; }
+.index a:hover, .index a:focus-visible { transform: translateY(-2px); }
+.index span { font: 700 1.2rem var(--display); }
+
+pre { background: var(--card); border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 1rem; overflow-x: auto; line-height: 1.5; }
+code { font-family: var(--mono, monospace); font-size: .88em; }
+:not(pre) > code { background: var(--card); padding: .1em .35em; border-radius: 4px; }
+blockquote { margin: 1.5rem 0; padding: .4rem 1.2rem; border-left: 4px solid var(--accent); background: var(--card);
+             border-radius: 0 var(--radius) var(--radius) 0; }
+img { max-width: 100%; border-radius: var(--radius); }
+table { border-collapse: collapse; display: block; overflow-x: auto; }
+th, td { border: 1px solid var(--muted); padding: .35rem .7rem; }
+hr { border: none; border-top: 2px dashed var(--muted); margin: 2.5rem 0; }
+.katex-display { overflow-x: auto; overflow-y: hidden; }
+.back { font-family: var(--display); }
+footer { margin-top: 4rem; padding-top: 1rem; border-top: 1px solid var(--muted); color: var(--muted); font-size: .85rem; }
+
+/* Provenance: text is colored by who wrote it. In a post: <div class="by-human|by-collab|by-ai">,
+   blank line, Markdown, blank line, </div>. Legend: <div class="legend"><div><span class="tag human">…</span> text</div>…</div> */
+.legend { position: relative; display: grid; gap: .4rem; margin: 0 0 2rem; padding: 1rem 3rem 1rem 1.2rem; font-size: .92rem;
+          background: var(--card); border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+.tag { font-weight: 700; margin-right: .4rem; }
+.tag::before { content: "● "; }
+.tag.human, .by-human { color: var(--human); }
+.tag.collab, .by-collab { color: var(--collab); }
+.tag.ai, .by-ai { color: var(--ai); }
+/* A second cue that doesn't rely on color: collab is dashed, AI is dotted, the author's own words are plain. */
+.by-collab, .by-ai, .tag.collab, .tag.ai { text-decoration-line: underline; text-decoration-thickness: 1px;
+  text-underline-offset: .28em; text-decoration-color: color-mix(in srgb, currentColor 45%, transparent); }
+.by-collab, .tag.collab { text-decoration-style: dashed; }
+.by-ai, .tag.ai { text-decoration-style: dotted; }
+.by-human, .tag.human { text-decoration-line: none; }
+/* AI-use declaration hidden behind a "?" in the legend's corner: <details class="declaration by-ai"> */
+.declaration summary { position: absolute; top: .8rem; right: .8rem; display: grid; place-items: center;
+  width: 1.7rem; height: 1.7rem; border-radius: 50%; border: 1.5px solid currentColor;
+  font-weight: 700; cursor: pointer; list-style: none; }
+.declaration summary::-webkit-details-marker { display: none; }
+.declaration[open] summary { background: var(--ai); color: var(--bg); }
+.declaration p { margin: .5rem 0 0; }
+/* Collapsible "Original input" at the end of a post: <details class="original"><summary>…</summary> */
+.original { margin: 3rem 0 1rem; padding: .8rem 1.2rem; background: var(--card); border: var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow); }
+.original summary { cursor: pointer; font: 700 1.15rem var(--display); }
+.original .note { margin: 1.2rem 0 .2rem; color: var(--muted); font-size: .9rem; }
+.footnote { margin: 0 0 .8rem; font-size: .85rem; line-height: 1.55; }
+.footnote + :not(.footnote) { margin-top: 1.8rem; }
+.share { margin-top: 3rem; font-size: .85rem; color: var(--muted); overflow-wrap: anywhere; }
+
+/* Code/prompt boxes: inline-block so a surrounding provenance underline doesn't run through the code. */
+pre { position: relative; display: inline-block; width: 100%; vertical-align: top; }
+.copy { position: absolute; top: .5rem; right: .5rem; padding: .15rem .6rem; font: 600 .75rem var(--body);
+  color: var(--fg); background: var(--bg); border: var(--border); border-radius: 6px; cursor: pointer; opacity: .85; }
+.copy:hover, .copy:focus-visible { opacity: 1; }
+pre code { display: block; white-space: pre-wrap; padding-right: 4rem; }
+
+/* Collapsible worked example (e.g. a glossary), styled like "Original input". */
+.example { margin: 1.5rem 0; padding: .8rem 1.2rem; background: var(--card); border: var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow); }
+.example summary { cursor: pointer; font-weight: 700; }
+.example table { font-size: .88rem; line-height: 1.5; }
+
+/* Checklist: a box at the top of the post; a fixed sidebar in the right margin on wide screens. */
+.checklist { margin: 0 0 2rem; padding: 1rem 1.2rem; font-size: .88rem; line-height: 1.45; background: var(--card);
+  border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+.checklist .checklist-title { margin: 0; font: 700 1rem var(--display); }
+.checklist .pass { margin: .7rem 0 .2rem; font-weight: 700; }
+.checklist ul { list-style: none; margin: 0; padding: 0; }
+.checklist li { margin: .15rem 0; }
+.checklist label { display: flex; gap: .5em; align-items: baseline; cursor: pointer; }
+.checklist input { accent-color: var(--accent); flex: none; }
+.checklist label:has(input:checked) { opacity: .6; text-decoration-line: line-through; }
+.checklist .clear { margin-top: .8rem; padding: .2rem .8rem; font: 600 .78rem var(--body); color: var(--fg);
+  background: var(--bg); border: var(--border); border-radius: 6px; cursor: pointer; }
+@media (min-width: 84rem) {
+  .checklist { position: fixed; z-index: 5; top: 7rem; margin: 0; left: calc(50% + var(--measure) / 2 + 1.5rem);
+    width: min(17rem, calc(50% - var(--measure) / 2 - 3rem)); max-height: calc(100vh - 9rem); overflow: auto; }
+}
+
+.dates { color: var(--muted); font-size: .9rem; }
+.intro { margin: 0 0 1.5rem; font-size: 1.1rem; }

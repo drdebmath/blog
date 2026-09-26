@@ -1,0 +1,72 @@
+/* Watercolor: soft washes on warm paper, in the spirit of Atelier-style anime art. Text stays dark on light for reading. */
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Nunito:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono&display=swap");
+:root {
+  --bg: #fbf7ee; --fg: #37323d; --muted: #6f6878; --card: rgb(255 253 248 / .82);
+  --accent: #a84f63; --accent2: #3f6a94;
+  --human: #3f6a94; --collab: #a84f63; --ai: #685a98;
+  --display: "Zen Maru Gothic", sans-serif; --body: "Nunito", sans-serif; --mono: "JetBrains Mono", monospace;
+  --size: 18px; --radius: 18px; --border: 1px solid rgb(168 79 99 / .15); --shadow: 0 8px 28px rgb(90 70 60 / .07);
+  /* the washes: sage, dusty blue, apricot, rose, lavender */
+  --wash-1: rgb(127 163 122 / .4); --wash-2: rgb(111 143 179 / .38); --wash-3: rgb(231 169 119 / .38);
+  --wash-4: rgb(217 140 154 / .36); --wash-5: rgb(169 155 201 / .36);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1f2a; --fg: #ece6da; --muted: #a9a2b3; --card: rgb(36 40 54 / .85);
+    --accent: #f0a3b3; --accent2: #9cc3ea;
+    --human: #9cc3ea; --collab: #f0a3b3; --ai: #c3b6ec;
+    --border: 1px solid rgb(240 163 179 / .15); --shadow: 0 8px 28px rgb(0 0 0 / .3);
+    --wash-1: rgb(98 140 110 / .22); --wash-2: rgb(80 110 170 / .24); --wash-3: rgb(190 130 90 / .16);
+    --wash-4: rgb(190 100 130 / .2); --wash-5: rgb(130 110 190 / .22);
+  }
+}
+
+/* Washes pool at the page edges, so the reading column stays calm. */
+html { background: var(--bg); }
+body { background:
+  radial-gradient(38rem 26rem at 0% 6%, var(--wash-1), transparent 70%),
+  radial-gradient(34rem 30rem at 100% 12%, var(--wash-2), transparent 70%),
+  radial-gradient(30rem 24rem at 0% 60%, var(--wash-4), transparent 70%),
+  radial-gradient(36rem 28rem at 100% 92%, var(--wash-3), transparent 70%),
+  var(--bg); background-attachment: fixed; max-width: none; padding-inline: max(1.25rem, calc((100% - var(--measure)) / 2)); }
+/* Paper grain. */
+body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .35; mix-blend-mode: multiply;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .4 0 0 0 0 .35 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+@media (prefers-color-scheme: dark) { body::before { mix-blend-mode: screen; opacity: .12; } }
+
+header { padding: 1.2rem 1.6rem; border-radius: 28px 40px 24px 36px / 36px 24px 40px 28px; background:
+  radial-gradient(60% 140% at 10% 0%, var(--wash-4), transparent 70%),
+  radial-gradient(50% 120% at 60% 100%, var(--wash-2), transparent 70%),
+  radial-gradient(40% 120% at 100% 20%, var(--wash-1), transparent 70%), var(--card); }
+h1 { font-weight: 900; }
+h2 { width: fit-content; padding: 0 .3rem; margin-left: -.3rem;
+     background: linear-gradient(100deg, transparent 2%, var(--wash-4) 8%, var(--wash-5) 70%, transparent 98%) 0 85% / 100% 45% no-repeat; }
+.index a, .legend, pre { backdrop-filter: blur(6px); }
+.index a:hover, .index a:focus-visible { box-shadow: 0 10px 30px var(--wash-4); }
+
+/* Ink magic circles at the page edges (original drawing, in the spirit of Witch Hat Atelier). The washes move to <html>
+   so the circles can sit between them and the text. */
+:root { --sigil: rgb(47 72 92 / .2); }
+@media (prefers-color-scheme: dark) { :root { --sigil: rgb(200 220 240 / .13); } }
+html { background:
+  radial-gradient(38rem 26rem at 0% 6%, var(--wash-1), transparent 70%),
+  radial-gradient(34rem 30rem at 100% 12%, var(--wash-2), transparent 70%),
+  radial-gradient(30rem 24rem at 0% 60%, var(--wash-4), transparent 70%),
+  radial-gradient(36rem 28rem at 100% 92%, var(--wash-3), transparent 70%),
+  var(--bg); background-attachment: fixed; }
+body { background: none; }
+body::before { z-index: -1; }
+body::after { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: var(--sigil);
+  --c: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none' stroke='black' stroke-width='1.1' stroke-linecap='round'%3E%3Ccircle cx='100' cy='100' r='97'/%3E%3Ccircle cx='100' cy='100' r='91' stroke-dasharray='1.5 3.5'/%3E%3Ccircle cx='100' cy='100' r='62'/%3E%3Ccircle cx='100' cy='100' r='56'/%3E%3Ccircle cx='100' cy='100' r='20'/%3E%3Cpolygon points='100.0,14.0 174.5,143.0 25.5,143.0'/%3E%3Cpolygon points='100.0,186.0 25.5,57.0 174.5,57.0'/%3E%3Ccircle cx='100.0' cy='14.0' r='4.5'/%3E%3Ccircle cx='174.5' cy='57.0' r='4.5'/%3E%3Ccircle cx='174.5' cy='143.0' r='4.5'/%3E%3Ccircle cx='100.0' cy='186.0' r='4.5'/%3E%3Ccircle cx='25.5' cy='143.0' r='4.5'/%3E%3Ccircle cx='25.5' cy='57.0' r='4.5'/%3E%3Cpath transform='translate%28112.7 28.1%29 rotate%2810%29' d='M0 -6V6M0 -6L4 -2'/%3E%3Cpath transform='translate%28136.5 36.8%29 rotate%2830%29' d='M-3 -6V6M3 -6V6M-3 0H3'/%3E%3Cpath transform='translate%28155.9 53.1%29 rotate%2850%29' d='M0 -6V6M-4 -3L4 3'/%3E%3Cpath transform='translate%28168.6 75.0%29 rotate%2870%29' d='M-4 -6L0 6L4 -6'/%3E%3Cpath transform='translate%28173.0 100.0%29 rotate%2890%29' d='M0 -6V6M0 0L4 -4M0 0L4 4'/%3E%3Cpath transform='translate%28168.6 125.0%29 rotate%28110%29' d='M-3 -6H3M0 -6V6M-3 6H3'/%3E%3Cpath transform='translate%28155.9 146.9%29 rotate%28130%29' d='M0 -6V6M0 -6L4 -2'/%3E%3Cpath transform='translate%28136.5 163.2%29 rotate%28150%29' d='M-3 -6V6M3 -6V6M-3 0H3'/%3E%3Cpath transform='translate%28112.7 171.9%29 rotate%28170%29' d='M0 -6V6M-4 -3L4 3'/%3E%3Cpath transform='translate%2887.3 171.9%29 rotate%28190%29' d='M-4 -6L0 6L4 -6'/%3E%3Cpath transform='translate%2863.5 163.2%29 rotate%28210%29' d='M0 -6V6M0 0L4 -4M0 0L4 4'/%3E%3Cpath transform='translate%2844.1 146.9%29 rotate%28230%29' d='M-3 -6H3M0 -6V6M-3 6H3'/%3E%3Cpath transform='translate%2831.4 125.0%29 rotate%28250%29' d='M0 -6V6M0 -6L4 -2'/%3E%3Cpath transform='translate%2827.0 100.0%29 rotate%28270%29' d='M-3 -6V6M3 -6V6M-3 0H3'/%3E%3Cpath transform='translate%2831.4 75.0%29 rotate%28290%29' d='M0 -6V6M-4 -3L4 3'/%3E%3Cpath transform='translate%2844.1 53.1%29 rotate%28310%29' d='M-4 -6L0 6L4 -6'/%3E%3Cpath transform='translate%2863.5 36.8%29 rotate%28330%29' d='M0 -6V6M0 0L4 -4M0 0L4 4'/%3E%3Cpath transform='translate%2887.3 28.1%29 rotate%28350%29' d='M-3 -6H3M0 -6V6M-3 6H3'/%3E%3Cpath d='M100 80v40M80 100h40'/%3E%3Ccircle cx='100' cy='100' r='6'/%3E%3C/svg%3E");
+  -webkit-mask: var(--c) no-repeat right -9rem top -7rem / 30rem, var(--c) no-repeat left -11rem bottom -10rem / 34rem, var(--c) no-repeat left 6% top 38% / 9rem;
+  mask: var(--c) no-repeat right -9rem top -7rem / 30rem, var(--c) no-repeat left -11rem bottom -10rem / 34rem, var(--c) no-repeat left 6% top 38% / 9rem; }
+/* Too little margin on small screens: the circles would sit behind the text. */
+@media (max-width: 62rem) { body::after { display: none; } }
+:root { --circle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none' stroke='black' stroke-width='1.1' stroke-linecap='round'%3E%3Ccircle cx='100' cy='100' r='97'/%3E%3Ccircle cx='100' cy='100' r='91' stroke-dasharray='1.5 3.5'/%3E%3Ccircle cx='100' cy='100' r='62'/%3E%3Ccircle cx='100' cy='100' r='56'/%3E%3Ccircle cx='100' cy='100' r='20'/%3E%3Cpolygon points='100.0,14.0 174.5,143.0 25.5,143.0'/%3E%3Cpolygon points='100.0,186.0 25.5,57.0 174.5,57.0'/%3E%3Ccircle cx='100.0' cy='14.0' r='4.5'/%3E%3Ccircle cx='174.5' cy='57.0' r='4.5'/%3E%3Ccircle cx='174.5' cy='143.0' r='4.5'/%3E%3Ccircle cx='100.0' cy='186.0' r='4.5'/%3E%3Ccircle cx='25.5' cy='143.0' r='4.5'/%3E%3Ccircle cx='25.5' cy='57.0' r='4.5'/%3E%3Cpath transform='translate%28112.7 28.1%29 rotate%2810%29' d='M0 -6V6M0 -6L4 -2'/%3E%3Cpath transform='translate%28136.5 36.8%29 rotate%2830%29' d='M-3 -6V6M3 -6V6M-3 0H3'/%3E%3Cpath transform='translate%28155.9 53.1%29 rotate%2850%29' d='M0 -6V6M-4 -3L4 3'/%3E%3Cpath transform='translate%28168.6 75.0%29 rotate%2870%29' d='M-4 -6L0 6L4 -6'/%3E%3Cpath transform='translate%28173.0 100.0%29 rotate%2890%29' d='M0 -6V6M0 0L4 -4M0 0L4 4'/%3E%3Cpath transform='translate%28168.6 125.0%29 rotate%28110%29' d='M-3 -6H3M0 -6V6M-3 6H3'/%3E%3Cpath transform='translate%28155.9 146.9%29 rotate%28130%29' d='M0 -6V6M0 -6L4 -2'/%3E%3Cpath transform='translate%28136.5 163.2%29 rotate%28150%29' d='M-3 -6V6M3 -6V6M-3 0H3'/%3E%3Cpath transform='translate%28112.7 171.9%29 rotate%28170%29' d='M0 -6V6M-4 -3L4 3'/%3E%3Cpath transform='translate%2887.3 171.9%29 rotate%28190%29' d='M-4 -6L0 6L4 -6'/%3E%3Cpath transform='translate%2863.5 163.2%29 rotate%28210%29' d='M0 -6V6M0 0L4 -4M0 0L4 4'/%3E%3Cpath transform='translate%2844.1 146.9%29 rotate%28230%29' d='M-3 -6H3M0 -6V6M-3 6H3'/%3E%3Cpath transform='translate%2831.4 125.0%29 rotate%28250%29' d='M0 -6V6M0 -6L4 -2'/%3E%3Cpath transform='translate%2827.0 100.0%29 rotate%28270%29' d='M-3 -6V6M3 -6V6M-3 0H3'/%3E%3Cpath transform='translate%2831.4 75.0%29 rotate%28290%29' d='M0 -6V6M-4 -3L4 3'/%3E%3Cpath transform='translate%2844.1 53.1%29 rotate%28310%29' d='M-4 -6L0 6L4 -6'/%3E%3Cpath transform='translate%2863.5 36.8%29 rotate%28330%29' d='M0 -6V6M0 0L4 -4M0 0L4 4'/%3E%3Cpath transform='translate%2887.3 28.1%29 rotate%28350%29' d='M-3 -6H3M0 -6V6M-3 6H3'/%3E%3Cpath d='M100 80v40M80 100h40'/%3E%3Ccircle cx='100' cy='100' r='6'/%3E%3C/svg%3E"); }
+/* Small screens: no room beside the text, so the glyphs move to a ribbon under the header and above the footer. */
+@media (max-width: 62rem) {
+  main::before, main::after { content: ""; display: block; height: 40px; background: color-mix(in srgb, var(--sigil), var(--fg) 25%);
+    -webkit-mask: var(--circle) space no-repeat left center / 40px 40px; mask: var(--circle) space no-repeat left center / 40px 40px; }
+  main::before { margin: -1rem 0 1.8rem; }
+  main::after { margin: 2.5rem 0 0; }
+}

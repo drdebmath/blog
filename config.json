@@ -1,0 +1,25 @@
+{
+  "title": "The Oblivious Robot",
+  "tagline": "A blog by Dr. Debasish Pattanayak",
+  "intro": "Welcome to the musings of an oblivious person.",
+  "theme": "homepage",
+  "url": "https://drdebmath.github.io/blog/",
+  "description": "A blog by Dr. Debasish Pattanayak on distributed algorithms, swarms of robots, research and writing with AI.",
+  "x": "@drdebmath",
+  "nav": [
+    {
+      "label": "homepage",
+      "href": "https://drdebmath.github.io"
+    },
+    {
+      "label": "about",
+      "href": "#about"
+    },
+    {
+      "label": "@drdebmath",
+      "href": "https://x.com/drdebmath"
+    }
+  ],
+  "footer": "No memory between rounds, so everything gets written down. · Free to share under <a href=\"#license\">CC BY 4.0</a> · For AI agents: <a href=\"llms.txt\">llms.txt</a> · <a href=\"feed.xml\">RSS</a>",
+  "declaration": "**Declaration of AI use.** This blog is written with the help of Claude (Anthropic). Text is colored by who wrote it, as shown in this legend: blue is the author's own words, rose is the author's ideas written up by AI, and lavender is written by AI. Titles and headings are AI-generated unless marked otherwise."
+}
