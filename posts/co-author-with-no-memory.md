@@ -203,6 +203,16 @@ Draft: [paste]
 
 </div>
 
+### An AGENTS.md for your paper
+
+<div class="by-ai">
+
+Pasting prompts works for one task. For a whole paper, write the rules down once where the AI will find them. Many coding agents, such as Codex and Cursor, read a file called `AGENTS.md` at the start of every session; Claude Code reads `CLAUDE.md`, which can contain just the line `@AGENTS.md`. Either way, the file works as the memory the co-author lacks.
+
+<a href="agents/writing-papers/AGENTS.md" download="AGENTS.md">Download AGENTS.md for writing papers</a>: this checklist and the advice above, written as instructions for an AI agent. Put it at the root of your paper's repository, next to `main.tex`, and keep `glossary.md` and `phrases.md` beside it. It tells the agent to verify every reference, follow the glossary and the phrase bank, report problems instead of silently fixing them, and keep a log of AI use for the disclosure. Edit it to fit your paper.
+
+</div>
+
 <div class="by-ai">
 
 **Disclosure.** Venues increasingly ask how AI was used. A declaration like the one at the top of this post, kept as you work, makes that easy.

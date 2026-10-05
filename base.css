@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@400;700&display=swap");
 /* Readable layout. Colors, fonts and flourishes come from the theme file (themes/*.css). */
 :root { --radius: 0; --shadow: none; --border: 1px solid var(--muted); --size: 17px; --measure: 44rem;
-        --human: var(--fg); --collab: var(--accent); --ai: var(--accent2); }
+        --human: var(--fg); --collab: var(--accent); --ai: var(--accent2);
+        --ai-font: "Source Serif 4", Georgia, serif;
+        --collab-font: "Roboto Slab", Rockwell, serif; }
 * { box-sizing: border-box; }
 body { margin: 0 auto; max-width: var(--measure); padding: 1.5rem 1.25rem 3rem;
        background: var(--bg); color: var(--fg); font: var(--size)/1.75 var(--body);
@@ -58,12 +61,13 @@ footer { margin-top: 4rem; padding-top: 1rem; border-top: 1px solid var(--muted)
 .tag.human, .by-human { color: var(--human); }
 .tag.collab, .by-collab { color: var(--collab); }
 .tag.ai, .by-ai { color: var(--ai); }
-/* A second cue that doesn't rely on color: collab is dashed, AI is dotted, the author's own words are plain. */
-.by-collab, .by-ai, .tag.collab, .tag.ai { text-decoration-line: underline; text-decoration-thickness: 1px;
-  text-underline-offset: .28em; text-decoration-color: color-mix(in srgb, currentColor 45%, transparent); }
-.by-collab, .tag.collab { text-decoration-style: dashed; }
-.by-ai, .tag.ai { text-decoration-style: dotted; }
-.by-human, .tag.human { text-decoration-line: none; }
+/* Cues that don't rely on hue: any AI involvement gets a highlighter tint, and each kind has its own typeface:
+   the theme's sans for the author, a slab serif for collab, a book serif for AI. */
+.by-collab, .by-ai, .tag.collab, .tag.ai { background: color-mix(in srgb, currentColor 9%, transparent); border-radius: 4px; }
+.by-collab, .tag.collab { font-family: var(--collab-font); }
+.by-ai, .tag.ai { font-family: var(--ai-font); }
+span.by-collab, span.by-ai, .tag.collab, .tag.ai { padding: .05em .2em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+div.by-collab, div.by-ai { padding: .1rem .6rem; margin: 0 -.6rem .5rem; }
 /* AI-use declaration hidden behind a "?" in the legend's corner: <details class="declaration by-ai"> */
 .declaration summary { position: absolute; top: .8rem; right: .8rem; display: grid; place-items: center;
   width: 1.7rem; height: 1.7rem; border-radius: 50%; border: 1.5px solid currentColor;
@@ -80,7 +84,7 @@ footer { margin-top: 4rem; padding-top: 1rem; border-top: 1px solid var(--muted)
 .footnote + :not(.footnote) { margin-top: 1.8rem; }
 .share { margin-top: 3rem; font-size: .85rem; color: var(--muted); overflow-wrap: anywhere; }
 
-/* Code/prompt boxes: inline-block so a surrounding provenance underline doesn't run through the code. */
+/* Code/prompt boxes: full-width block with a corner copy button. */
 pre { position: relative; display: inline-block; width: 100%; vertical-align: top; }
 .copy { position: absolute; top: .5rem; right: .5rem; padding: .15rem .6rem; font: 600 .75rem var(--body);
   color: var(--fg); background: var(--bg); border: var(--border); border-radius: 6px; cursor: pointer; opacity: .85; }

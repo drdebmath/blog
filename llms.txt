@@ -6,7 +6,7 @@ Posts are Markdown files. Text is marked by who wrote it: `by-human` (the author
 
 ## Posts
 
-- [Writing Papers When Your Co-author* Has No Memory†](https://drdebmath.github.io/blog/posts/co-author-with-no-memory.md): A checklist for writing research papers with an AI co-author: literature search, glossary, phrase bank, structure and polish, and where AI helps at each step. (published 2026-09-26, updated 2026-09-26)
+- [Writing Papers When Your Co-author* Has No Memory†](https://drdebmath.github.io/blog/posts/co-author-with-no-memory.md): A checklist for writing research papers with an AI co-author: literature search, glossary, phrase bank, structure and polish, and where AI helps at each step. (published 2026-09-26, updated 2026-10-05)
 - [Why did I start blogging again?](https://drdebmath.github.io/blog/posts/why-did-i-start-blogging-again.md): Why I started blogging again, what to expect here, and why this blog is called The Oblivious Robot. (published 2026-09-26, updated 2026-09-26)
 
 ## Pages

@@ -42,8 +42,8 @@ $("nav").innerHTML = (config.nav ?? []).map(l => `<a href="${l.href}">${l.label}
 // Legend + "?" AI-use declaration, on every page. A post can override the text with "declaration" in posts.json.
 const legend = post => `<div class="legend">
   <div><span class="tag human">human-written</span> The author's own words (plain).</div>
-  <div><span class="tag collab">human–AI collab</span> The author's ideas, written up as prose by AI (dashed).</div>
-  <div><span class="tag ai">AI-generated</span> Written by AI from the author's input (dotted).</div>
+  <div><span class="tag collab">human–AI collab</span> The author's ideas, written up as prose by AI (tinted, slab serif).</div>
+  <div><span class="tag ai">AI-generated</span> Written by AI from the author's input (tinted, book serif).</div>
   <details class="declaration by-ai"><summary title="AI use declaration" aria-label="AI use declaration">?</summary>
     ${marked.parse(post?.declaration ?? config.declaration ?? "")}</details>
 </div>`;

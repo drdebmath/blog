@@ -41,8 +41,9 @@ Your text here.
 ```
 
 Inside a paragraph use `<span class="by-ai">…</span>`. Don't nest one kind inside another: split the text
-into sibling spans in a plain `<div>` instead, so each piece gets its own underline style. Collab text is
-dashed, AI is dotted and the author's own words are plain, so readers who can't tell the colors apart still can.
+into sibling spans in a plain `<div>` instead, so each piece gets its own style. Collab and AI text get a
+highlighter tint, collab text is set in a slab serif, AI text in a book serif, and the author's own words are plain, so readers who can't tell the
+colors apart still can.
 
 Other building blocks:
 - `<p class="footnote">* …</p>`: small note under the legend, for a mark in the title.
