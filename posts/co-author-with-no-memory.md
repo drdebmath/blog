@@ -129,7 +129,7 @@ A reader who stops after the first layer still leaves with something. A reader w
 
 **Write headings that say what is inside.** "Results" or "The protocol" tells the reader nothing. Combine short related subsections into one, and inside it use lighter structure instead of more subsections: a numbered list, paragraphs whose first sentence states their topic, or italic lead-ins.
 
-**Don't overclaim the literature.** "Most approaches" and "always" are claims too, and they need sources. "Many approaches" with citations is usually what you can defend.
+**Don't overclaim the literature.** "Most approaches" and "always" are claims too, and they need sources.
 
 </div>
 
@@ -151,7 +151,7 @@ The second version is longer and cannot be misread.
 
 **Add reminders.** In a long paper, readers forget. Short signposts, like *Recall that …* or *As shown in Section 3, …*, cost a few words and save the reader from flipping back.
 
-**Check figures and references.** A figure should appear on the same page where it is first referred to, or on the next page. Give each figure a detailed caption, so it can be understood without hunting through the text for an explanation. A LaTeX trick for placement: put each figure in its own file and include it with `\input{figures/p1tree}`. That one line decides where the figure lands, so move it up or down in the source until the figure sits on the right page. Use colour-blind-safe colours, and let line styles (dashed, double, grey) carry the same meaning, so the figure survives a black-and-white printout.
+**Check figures and references.** A figure should appear on the same page where it is first referred to, or on the next page. Give each figure a detailed caption, so it can be understood without hunting through the text for an explanation. A LaTeX trick for placement: put each figure in its own file and include it with `\input{figures/p1tree}`. That one line decides where the figure lands, so move it up or down in the source until the figure sits on the right page. Use colour-blind-safe colours, and let line styles (dashed, double, grey) carry the same meaning.
 
 **No additive constants in asymptotic bounds.** Write $O(m)$, not $O(m+1)$. State once that $n \ge 2$, and the reader fills in the rest. Keep exact counts, and factors whose 1 carries a term of the bound, such as $m(1 + \Delta/k) = m + m\Delta/k$.
 
