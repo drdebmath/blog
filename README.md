@@ -50,6 +50,8 @@ Other building blocks:
 - `<aside class="checklist"> <p class="checklist-title">…</p> <p class="pass">…</p> <ul><li>…</li></ul> </aside>`:
   a working checklist (ticks saved in the reader's browser, with a Clear button); a fixed sidebar on wide screens.
 - `<details class="example"><summary>…</summary> … </details>`: a collapsible worked example.
+- `<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/…" title="…" allowfullscreen></iframe></div>`:
+  an embedded video at 16:9, full column width.
 - Fenced code blocks get a Copy button, so they work as copyable prompts.
 - `<details class="original"><summary>Original input</summary> … </details>`: the author's input, at the end.
 
@@ -77,7 +79,7 @@ Everything is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by
 | Layout shared by all themes | `base.css` (uses only theme variables) |
 
 Themes: `homepage` (default; matches drdebmath.github.io, with robot and distributed-algorithm glyphs),
-`watercolor` (washes and ink magic circles), `pokemon` (Poké Ball red, type-symbol glyphs).
+`watercolor` (washes and ink magic circles), `pokemon` (Poké Ball red, type-symbol glyphs), `masala` (film-poster saffron and rani, semicolon and marigold glyphs).
 Every theme has a dark mode; the header button switches it and remembers the choice.
 Background glyphs sit in the side gutters on wide screens and in a ribbon under the header and above the
 footer on small screens, so they never sit behind text.

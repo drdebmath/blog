@@ -1,0 +1,50 @@
+/* Masala film poster, after the Semicolon video: saffron, marigold, rani pink, night ink, and teal for code. */
+@import url("https://fonts.googleapis.com/css2?family=Rozha+One&family=Baloo+2:wght@500;700&family=Mukta:wght@400;700&family=JetBrains+Mono&display=swap");
+:root {
+  --light: #ffb000;
+  --bg: #fdf4e3; --fg: #2a1a22; --muted: #7a5f55; --card: #fffaf0;
+  --accent: #c2185b; --accent2: #00796b; --saffron: #ff8f00; --ink: #1b1024;
+  --human: #00796b; --collab: #c2185b; --ai: #6a3fa0;
+  --display: "Rozha One", serif; --body: "Mukta", sans-serif; --mono: "JetBrains Mono", monospace;
+  --size: 18px; --radius: 10px; --border: 2px solid #f0d9b5; --shadow: 0 4px 0 #f0d9b5;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #160d1d; --fg: #f6ead8; --muted: #b9a593; --card: #231530;
+    --accent: #ff5c9a; --accent2: #2fd6c3; --ink: #0b0610;
+    --human: #2fd6c3; --collab: #ff7aaa; --ai: #c3a3ff;
+    --border: 2px solid #3a2647; --shadow: 0 4px 0 #3a2647;
+  }
+}
+
+/* Header as a film-title band: a striped sunburst in saffron and rani. */
+header { padding: 1rem 1.4rem; border-radius: var(--radius);
+         background: repeating-conic-gradient(from 0deg at 50% 140%, #ff8f00 0 6deg, #e65100 6deg 12deg);
+         border-bottom: 5px solid var(--accent); }
+.logo, nav a { color: #fff; text-shadow: 0 2px 0 #00000055; }
+#mode { color: #fff; }
+h1 { font-weight: 400; color: var(--accent); }
+h2 { font-weight: 400; width: fit-content; border-bottom: 3px dotted var(--saffron); }
+.index a:hover, .index a:focus-visible { box-shadow: 0 4px 0 var(--saffron); border-color: var(--saffron); }
+blockquote { border-left-color: var(--saffron); }
+pre { border-top: 4px solid var(--accent2); }
+:not(pre) > code { color: var(--accent2); }
+
+/* Background glyphs: semicolons and marigolds (original drawings), in strips in the gutters only. */
+:root { --glyphs: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='400' opacity='0.3'%3E%3Ctext x='40' y='90' font-family='monospace' font-weight='700' font-size='84' fill='%2300796b' transform='rotate(-12 60 60)'%3E;%3C/text%3E%3Cg transform='translate(150 70)' fill='%23ff8f00'%3E%3Ccircle r='9'/%3E%3Ccircle cx='14' r='9'/%3E%3Ccircle cx='-14' r='9'/%3E%3Ccircle cy='14' r='9'/%3E%3Ccircle cy='-14' r='9'/%3E%3Ccircle cx='10' cy='10' r='9'/%3E%3Ccircle cx='-10' cy='-10' r='9'/%3E%3Ccircle cx='10' cy='-10' r='9'/%3E%3Ccircle cx='-10' cy='10' r='9'/%3E%3Ccircle r='6' fill='%23e65100'/%3E%3C/g%3E%3Cg transform='translate(55 230)' fill='%23c2185b'%3E%3Ccircle r='7'/%3E%3Ccircle cx='11' r='7'/%3E%3Ccircle cx='-11' r='7'/%3E%3Ccircle cy='11' r='7'/%3E%3Ccircle cy='-11' r='7'/%3E%3Ccircle r='4.5' fill='%23ffb000'/%3E%3C/g%3E%3Ctext x='120' y='300' font-family='monospace' font-weight='700' font-size='64' fill='%23c2185b' transform='rotate(14 140 270)'%3E;%3C/text%3E%3Ctext x='30' y='385' font-family='monospace' font-weight='700' font-size='50' fill='%23ff8f00' transform='rotate(-6 50 360)'%3E;%3C/text%3E%3C/svg%3E"); }
+@media (prefers-color-scheme: dark) { :root { --glyphs: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='400' opacity='0.3'%3E%3Ctext x='40' y='90' font-family='monospace' font-weight='700' font-size='84' fill='%232fd6c3' transform='rotate(-12 60 60)'%3E;%3C/text%3E%3Cg transform='translate(150 70)' fill='%23ffb000'%3E%3Ccircle r='9'/%3E%3Ccircle cx='14' r='9'/%3E%3Ccircle cx='-14' r='9'/%3E%3Ccircle cy='14' r='9'/%3E%3Ccircle cy='-14' r='9'/%3E%3Ccircle cx='10' cy='10' r='9'/%3E%3Ccircle cx='-10' cy='-10' r='9'/%3E%3Ccircle cx='10' cy='-10' r='9'/%3E%3Ccircle cx='-10' cy='10' r='9'/%3E%3Ccircle r='6' fill='%23ff6d00'/%3E%3C/g%3E%3Cg transform='translate(55 230)' fill='%23ff5c9a'%3E%3Ccircle r='7'/%3E%3Ccircle cx='11' r='7'/%3E%3Ccircle cx='-11' r='7'/%3E%3Ccircle cy='11' r='7'/%3E%3Ccircle cy='-11' r='7'/%3E%3Ccircle r='4.5' fill='%23ffb000'/%3E%3C/g%3E%3Ctext x='120' y='300' font-family='monospace' font-weight='700' font-size='64' fill='%23ff5c9a' transform='rotate(14 140 270)'%3E;%3C/text%3E%3Ctext x='30' y='385' font-family='monospace' font-weight='700' font-size='50' fill='%23ffb000' transform='rotate(-6 50 360)'%3E;%3C/text%3E%3C/svg%3E"); } }
+html { background: var(--bg); }
+body { background: none; }
+@media (min-width: 62rem) {
+  html { --strip: min(200px, calc((100vw - var(--measure)) / 2 - 2rem));
+         background: var(--glyphs) left 1rem top 0 / var(--strip) repeat-y,
+                     var(--glyphs) right 1rem top 200px / var(--strip) repeat-y, var(--bg);
+         background-attachment: fixed; }
+}
+/* Small screens: no gutters, so a thin bunting of marigolds sits under the header and above the footer. */
+@media (max-width: 62rem) {
+  main::before, main::after { content: ""; display: block; height: 14px;
+    background: radial-gradient(circle at 7px 7px, var(--saffron) 5px, transparent 6px) 0 0 / 22px 14px repeat-x; }
+  main::before { margin: -1rem 0 1.8rem; }
+  main::after { margin: 2.5rem 0 0; }
+}

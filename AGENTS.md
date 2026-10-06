@@ -19,13 +19,16 @@ are meant to be found again and referred back to.
   `page`, `declaration`).
 - `config.json`: site title, nav, footer, default theme, default AI-use declaration.
 - `base.css`: layout shared by all themes, using only theme variables. `themes/<name>.css`: colors, fonts,
-  glyphs (`homepage`, `watercolor`, `pokemon`). Every theme needs a dark mode.
+  glyphs (`homepage`, `watercolor`, `pokemon`, `masala`). Every theme needs a dark mode.
 - `agents/<topic>/AGENTS.md`: downloadable agent instructions that posts link to (e.g. `agents/writing-papers/`
   for the paper-writing post). Keep them in sync with their post, and bump the post's `updated` when they change.
 - `build.py`: generates `p/<slug>.html`, `p/<slug>.png`, `feed.xml` and `llms.txt`. **Never edit these by
   hand**; run `python3 build.py` after adding, editing or retitling a post.
 - Preview: `python3 -m http.server` → http://localhost:8000. Publishing is a push to `main` (GitHub Pages),
   so don't push unless asked.
+- Pushing needs the **drdebmath** GitHub account; the other account on this machine (debasishiiti) gets a
+  403. This repo's git config gets credentials from `gh auth git-credential` instead of the Keychain, so
+  `gh` must have drdebmath active. If a push is denied, run `gh auth switch --user drdebmath` and retry.
 
 ## Turning the author's input into a post
 
