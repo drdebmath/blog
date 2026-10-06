@@ -6,13 +6,13 @@
   <description>A blog by Dr. Debasish Pattanayak on distributed algorithms, swarms of robots, research and writing with AI.</description>
   <language>en</language>
   <copyright>CC BY 4.0, Debasish Pattanayak</copyright>
-  <lastBuildDate>Mon, 05 Oct 2026 00:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 06 Oct 2026 00:00:00 +0000</lastBuildDate>
   <item>
     <title>Writing Papers When Your Co-author* Has No Memory†</title>
     <link>https://drdebmath.github.io/blog/p/co-author-with-no-memory.html</link>
     <guid isPermaLink="false">https://drdebmath.github.io/blog/#co-author-with-no-memory</guid>
     <pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
-    <description>A checklist for writing research papers with an AI co-author: literature search, glossary, phrase bank, structure and polish, and where AI helps at each step.</description>
+    <description>A checklist for writing research papers with an AI co-author: literature search, glossary, phrase bank, structure, polish and compression, and where AI helps at each step.</description>
     <content:encoded><![CDATA[<p class="footnote">* <span class="by-collab">The co-author with no memory is the AI agent (simply "the AI" below), or your oblivious supervisor.</span> <span class="by-ai">Either way, every session starts from scratch, so the glossary, the phrase bank and the structural rules below have to be handed over each time.</span></p>
 
 <p class="footnote by-collab">† I was talking about this with my students, and wrote it down here so they can find it again and refer back to it.</p>
@@ -23,6 +23,7 @@
 <ul>
 <li>Search the literature</li>
 <li>Verify every reference (dblp → DOI)</li>
+<li>Check claims about cited work against the full text</li>
 <li>Build a glossary, anchored to a reference text</li>
 <li>Build a phrase bank</li>
 </ul>
@@ -33,6 +34,10 @@
 <li>Algorithms: idea → description → variables → pseudocode → proof</li>
 <li>Split into small procedures</li>
 <li>Motivation before results</li>
+<li>Climb: each result removes the last one's bottleneck</li>
+<li>Informal overview: challenge, then how</li>
+<li>Side results as remarks</li>
+<li>Headings that say what is inside</li>
 </ul>
 <p class="pass">Polish</p>
 <ul>
@@ -41,6 +46,9 @@
 <li>Add reminders</li>
 <li>Figures on the same or next page, with detailed captions</li>
 <li>Simplify proofs</li>
+<li>No "+1" inside big-O</li>
+<li>Three rounds, one focus each</li>
+<li>Compress: say each idea once, at its best place</li>
 </ul>
 </aside>
 
@@ -57,6 +65,8 @@ The process below works in passes. Each pass has one job: first prepare, then st
 <div class="by-collab">
 
 Start by **searching the literature**. This is not only about citing related work. Knowing what has been done tells you what your contribution actually is, and it shows you the vocabulary your community already uses. A paper that invents its own words for standard ideas makes readers translate before they can understand. Tools that show papers as a network of citations help here: [Connected Papers](https://www.connectedpapers.com/) and [Research Rabbit](https://www.researchrabbit.ai/) show which papers cite which, and [Elicit](https://elicit.com/) finds and summarizes papers that answer a research question.
+
+**Read what you cite.** Every statement about a cited paper should be checked against its full text, not only its abstract, and credit should go to the work that introduced an idea, with later improvements credited to the works that made them. A citation style also needs one decision, made once: "First author et al." for more than two authors, both names for two, and full author lists only in the bibliography.
 
 Next, **build a glossary**: a running list of every technical term in the paper, each with a one-line definition. The glossary forces a decision: one term for each concept. Once you have called something a *round*, it is never a *step* or a *phase* two sections later.
 
@@ -124,7 +134,17 @@ A reader who stops after the first layer still leaves with something. A reader w
 
 **Split the algorithm into small functions or procedures.** Each piece can then be described, and proved correct, on its own. A proof that says "by Lemma 3, `Explore` terminates" is much easier to check than one that reasons about a single hundred-line procedure.
 
-**Put motivation before results.** Tell the reader why a problem matters before telling them what you achieved. The same rule shapes a good abstract, so follow an abstract-writing guide when you write yours. A good one is Neel Nanda's [Highly Opinionated Advice on How to Write ML Papers](https://www.alignmentforum.org/posts/eJGptPbbFPZGLpjsp/highly-opinionated-advice-on-how-to-write-ml-papers). Its annotated abstract shows the job of each sentence.
+**Put motivation before results.** Tell the reader why a problem matters before telling them what you achieved. The same rule shapes a good abstract, so follow an abstract-writing guide when you write yours. A good one is Neel Nanda's [Highly Opinionated Advice on How to Write ML Papers](https://www.alignmentforum.org/posts/eJGptPbbFPZGLpjsp/highly-opinionated-advice-on-how-to-write-ml-papers). Its annotated abstract shows the job of each sentence. Open the abstract with one sentence of practical motivation, and use only terms that describe your results.
+
+**Climb gradually.** If the paper has several contributions, order them as steps, each one removing the bottleneck of the previous one. Present the steps in the same order everywhere: in the introduction, in the overview of techniques and in the body.
+
+**Give an informal overview of techniques** near the start: high level, compressed, and saying that it is informal. Each paragraph opens with a challenge and continues with how the paper overcomes it, with no separate *Challenge* and *Solution* labels.
+
+**Rank your results.** The main results get sections; side results become remarks, not subsections. A result that is never used is removed.
+
+**Write headings that say what is inside.** "Results" or "The protocol" tells the reader nothing. Combine short related subsections into one, and inside it use lighter structure instead of more subsections: a numbered list, paragraphs whose first sentence states their topic, or italic lead-ins.
+
+**Don't overclaim the literature.** "Most approaches" and "always" are claims too, and they need sources. "Many approaches" with citations is usually what you can defend.
 
 </div>
 
@@ -146,9 +166,15 @@ The second version is longer and cannot be misread.
 
 **Add reminders.** In a long paper, readers forget. Short signposts, like *Recall that …* or *As shown in Section 3, …*, cost a few words and save the reader from flipping back.
 
-**Check figures and references.** A figure should appear on the same page where it is first referred to, or on the next page. Give each figure a detailed caption, so it can be understood without hunting through the text for an explanation. A LaTeX trick for placement: put each figure in its own file and include it with `\input{figures/p1tree}`. That one line decides where the figure lands, so move it up or down in the source until the figure sits on the right page.
+**Check figures and references.** A figure should appear on the same page where it is first referred to, or on the next page. Give each figure a detailed caption, so it can be understood without hunting through the text for an explanation. A LaTeX trick for placement: put each figure in its own file and include it with `\input{figures/p1tree}`. That one line decides where the figure lands, so move it up or down in the source until the figure sits on the right page. Use colour-blind-safe colours, and let line styles (dashed, double, grey) carry the same meaning, so the figure survives a black-and-white printout.
+
+**No additive constants in asymptotic bounds.** Write $O(m)$, not $O(m+1)$. State once that $n \ge 2$, and the reader fills in the rest. Keep exact counts, and factors whose 1 carries a term of the bound, such as $m(1 + \Delta/k) = m + m\Delta/k$.
 
 **Simplify proofs wherever you can.** A shorter proof is easier to check, easier to trust and harder to get wrong. If a case analysis can be replaced by one invariant, replace it.
+
+**Polish in rounds, one focus each.** At least three: (1) "this" and "that" references, glossary terms and fixed phrases; (2) definitions before first use, connectives and the order of ideas; (3) the precision of every claim against the theorem or source it rests on. A reader looking for everything at once finds little.
+
+**Compress.** Papers repeat themselves: the same caveat in the introduction, the overview and the body. In every polishing pass, list each idea stated more than once, with all its locations; keep the place where it is stated best; and shorten the others to a reminder (*Recall that …*) or a reference. State each result first at its core, the main bound in one sentence, then enrich it step by step: refinements, tightness, special cases, comparisons with earlier work.
 
 </div>
 
@@ -162,11 +188,13 @@ The rule for every pass is the same: **AI proposes, you verify.**
 
 <div class="mixed">
 
-- <span class="by-collab">**Literature search.**</span> <span class="by-ai">AI can produce references to papers that do not exist, so every citation needs checking.</span> <span class="by-collab">One way to verify a whole bibliography: ask the AI to take each reference from [dblp](https://dblp.org), then use the DOI to find the actual paper and check the metadata (authors, title, venue, year) against your entry. Do this for all your references.</span>
+- <span class="by-collab">**Literature search.**</span> <span class="by-ai">AI can produce references to papers that do not exist, so every citation needs checking.</span> <span class="by-collab">One way to verify a whole bibliography: ask the AI to take each reference from [dblp](https://dblp.org), then use the DOI to find the actual paper and check the metadata (authors, title, venue, year) against your entry. Do this for all your references. For claims about cited work, ask the AI to record where it found the full text and which pages it read, and to mark every claim whose source it could not access.</span>
 - <span class="by-collab">**Glossary.** A glossary can be built up across several projects rather than from scratch for each paper. For consistency, anchor it to a reference paper or book in your area and follow its terms.</span> <span class="by-ai">The AI can then check a draft against it: ask it to list every technical term, where it is first used and where it is defined, and to flag pairs of terms that seem to mean the same thing.</span>
 - <span class="by-collab">**Phrase bank.** The phrase bank is a meta thing: technical phrases hide inside ordinary-looking sentences, so read the draft line by line to identify them. Then give the AI reference phrases, so that it knows moving from $a$ to $b$ is a technical phrase with a fixed form, not wording to paraphrase.</span> <span class="by-ai">Read its changes; don't accept them wholesale.</span>
 - <span class="by-collab">**Structure.** Specify structural requirements at the beginning, before the AI drafts or revises anything: terms defined before use, the five layers for each algorithm, motivation before results.</span> <span class="by-ai">Afterwards, check with concrete questions, such as *Which terms are used before they are defined?* The AI is a dependable reviewer when the question is this specific.</span>
 - <span class="by-collab">**Polish.** Polishing works as find-then-generalize: find one instance of a problem yourself, such as an unclear "this" or two terms for the same thing, then ask the AI to find all such instances and disambiguate each one.</span> <span class="by-ai">For proofs, the AI can suggest a simpler argument, but you must check every step yourself. A proof that reads well and a proof that is correct are not the same thing.</span>
+- <span class="by-collab">**Compression.** Ask the AI for an inventory of repetitions and the word count of each section before and after, so that you can see what was cut.</span>
+- <span class="by-collab">**Parallel work.** Independent jobs, such as a reference check, can run in the background while the AI polishes. Review their results before applying them.</span>
 
 </div>
 
@@ -208,6 +236,14 @@ Draft: [paste]
 Follow these rules for everything you write or revise: define every term before its first use; present each algorithm as high-level idea, detailed description, variables, pseudocode, correctness proof; state the motivation before each result. If the draft breaks a rule, tell me where instead of silently rewriting it.
 ```
 
+**Compress**
+
+```text
+List every idea, result or caveat that my draft states more than once, with all its locations. For each, say where it is stated best, and propose how to shorten the other occurrences to a brief reminder or a reference, without losing the idea. Report the word count of each section before and after. Do not apply the changes.
+
+Draft: [paste]
+```
+
 **Find all instances of one problem**
 
 ```text
@@ -225,6 +261,12 @@ Draft: [paste]
 Pasting prompts works for one task. For a whole paper, write the rules down once where the AI will find them. Many coding agents, such as Codex and Cursor, read a file called `AGENTS.md` at the start of every session; Claude Code reads `CLAUDE.md`, which can contain just the line `@AGENTS.md`. Either way, the file works as the memory the co-author lacks.
 
 <a href="agents/writing-papers/AGENTS.md" download="AGENTS.md">Download AGENTS.md for writing papers</a>: this checklist and the advice above, written as instructions for an AI agent. Put it at the root of your paper's repository, next to `main.tex`, and keep `glossary.md` and `phrases.md` beside it. It tells the agent to verify every reference, follow the glossary and the phrase bank, report problems instead of silently fixing them, and keep a log of AI use for the disclosure. Edit it to fit your paper.
+
+</div>
+
+<div class="by-collab">
+
+The file also has a section for the authors' instructions about this particular paper: the working draft, the order of the contributions, notation, citation style. Ask the AI to record each new instruction there, with its date, as soon as you give it. Otherwise the next session repeats the mistake you corrected in the last one.
 
 </div>
 
@@ -300,6 +342,8 @@ None of this replaces thinking about the problem. What AI can take over is the m
 5. Polish is finding something and asking AI to find all such things and disambiguate.
 
 </div>
+
+<p class="note">Later additions (2026-10-06) come from the instructions the author gave an AI agent while writing a paper, recorded by the agent in that paper's AGENTS.md. They were written by the agent, so they are not quoted here as the author's own words.</p>
 
 <p class="note">On why this post exists, and its title:</p>
 
