@@ -1,0 +1,49 @@
+/* Datasheet: a chip data sheet for the post on big O. White paper, black rules, one signal red, numbered sections,
+   and growth curves crossing at n0 in the margins. */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono&display=swap");
+:root {
+  --light: #ffd34d;
+  --bg: #fbfbf8; --fg: #1b1b1b; --muted: #5d5d5a; --card: #ffffff;
+  --accent: #c8102e; --accent2: #1d4e89;
+  --human: #1d4e89; --collab: #c8102e; --ai: #5b3f95;
+  --display: "Space Grotesk", sans-serif; --body: "Source Sans 3", sans-serif; --mono: "JetBrains Mono", monospace;
+  --size: 18px; --radius: 2px; --border: 1px solid #1b1b1b; --shadow: none;
+  --ink: rgb(27 27 27 / .16);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131416; --fg: #ecebe6; --muted: #a3a29c; --card: #1b1c1f;
+    --accent: #ff5a6e; --accent2: #8ab4f0;
+    --human: #8ab4f0; --collab: #ff7a8a; --ai: #c3b0f0;
+    --border: 1px solid #3a3b3f;
+    --ink: rgb(236 235 230 / .12);
+  }
+}
+
+html { background: var(--bg); }
+body { background: none; }
+header { border-bottom: 4px solid var(--fg); padding-bottom: .6rem; }
+h1 { font-weight: 700; letter-spacing: -.02em; }
+/* Numbered sections, as in a data sheet. */
+main { counter-reset: sec; }
+h2 { counter-increment: sec; font-weight: 700; border-top: 1px solid var(--fg); padding-top: .5rem; }
+h2::before { content: counter(sec) "  "; color: var(--accent); font-family: var(--mono); font-size: .8em; }
+.index a:hover, .index a:focus-visible { box-shadow: inset 4px 0 0 var(--accent); }
+
+/* Margin glyphs: O(n log n), two growth curves crossing at n0, a tilde constant, an Omega. Only where the
+   gutters are wide enough, so they never sit behind text. */
+@media (min-width: 62rem) {
+  body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: var(--ink);
+    --strip: min(200px, calc((100vw - var(--measure)) / 2 - 2rem));
+    --g: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='420' fill='none' stroke='black' stroke-width='1.4' stroke-linecap='round'%3E%3Cg font-family='Georgia,serif' fill='black' stroke='none'%3E%3C/g%3E%3Ctext fill='black' stroke='none' font-family='Georgia,serif' x='18' y='40' font-size='22' transform='rotate%28-6 18 40%29'%3EO%28n log n%29%3C/text%3E%3Cpath d='M30 170V70M30 170H170'/%3E%3Cpath d='M30.0 156.0L36.0 153.0L42.0 150.0L48.0 147.0L54.0 144.0L60.0 141.0L66.0 138.0L72.0 135.0L78.0 132.0L84.0 129.0L90.0 126.0L96.0 123.0L102.0 120.0L108.0 117.0L114.0 114.0L120.0 111.0L126.0 108.0L132.0 105.0L138.0 102.0L144.0 99.0L150.0 96.0L156.0 93.0L162.0 90.0L168.0 87.0'/%3E%3Cpath d='M30.0 170.0L34.0 169.9L38.0 169.6L42.0 169.1L46.0 168.4L50.0 167.5L54.0 166.3L58.0 165.0L62.0 163.5L66.0 161.8L70.0 159.9L74.0 157.7L78.0 155.4L82.0 152.9L86.0 150.1L90.0 147.2L94.0 144.0L98.0 140.7L102.0 137.1L106.0 133.4L110.0 129.4L114.0 125.3L118.0 120.9L122.0 116.4L126.0 111.6L130.0 106.6L134.0 101.4L138.0 96.1L142.0 90.5L146.0 84.7L150.0 78.7L154.0 72.5L158.0 66.2L162.0 62.0L166.0 62.0L170.0 62.0' stroke-dasharray='4 3'/%3E%3Cpath d='M130.8 170v-100' stroke-width='.8' stroke-dasharray='1 3'/%3E%3Ctext fill='black' stroke='none' font-family='Georgia,serif' x='122.80000000000001' y='184' font-size='12' font-style='italic'%3En%3Ctspan font-size='8' dy='3'%3E0%3C/tspan%3E%3C/text%3E%3Ctext fill='black' stroke='none' font-family='Georgia,serif' x='100' y='230' font-size='18' transform='rotate%284 100 230%29'%3Ec %C2%B7 g%28n%29%3C/text%3E%3Ctext fill='black' stroke='none' font-family='Georgia,serif' x='20' y='300' font-size='20' transform='rotate%28-3 20 300%29'%3E%E2%88%BC 2.95n%3C/text%3E%3Ctext fill='black' stroke='none' font-family='Georgia,serif' x='110' y='350' font-size='40' transform='rotate%280 110 350%29'%3E%CE%A9%3C/text%3E%3Ctext fill='black' stroke='none' font-family='Georgia,serif' x='30' y='395' font-size='18' transform='rotate%280 30 395%29'%3En%3Ctspan font-size='11' dy='-8'%3E9/4%2B%CE%B5%3C/tspan%3E%3C/text%3E%3C/svg%3E");
+    -webkit-mask: var(--g) left 1rem top 40px / var(--strip) repeat-y, var(--g) right 1rem top 250px / var(--strip) repeat-y;
+    mask: var(--g) left 1rem top 40px / var(--strip) repeat-y, var(--g) right 1rem top 250px / var(--strip) repeat-y; }
+}
+/* Small screens: no room beside the text, so the glyphs move to a ribbon under the header and above the footer. */
+@media (max-width: 62rem) {
+  main::before, main::after { content: ""; display: block; height: 40px; background: color-mix(in srgb, var(--ink), var(--accent) 35%);
+    --r: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='44'%3E%3Ctext fill='black' font-family='Georgia,serif' x='4' y='30' font-size='18' transform='rotate%280 4 30%29'%3EO%281%29%3C/text%3E%3Ctext fill='black' font-family='Georgia,serif' x='60' y='30' font-size='18' transform='rotate%280 60 30%29'%3E%E2%88%BC cn%3C/text%3E%3Ctext fill='black' font-family='Georgia,serif' x='125' y='32' font-size='24' transform='rotate%280 125 32%29'%3E%CE%A9%3C/text%3E%3Ctext fill='black' font-family='Georgia,serif' x='160' y='30' font-size='18' transform='rotate%280 160 30%29'%3En%3Ctspan font-size='11' dy='4'%3E0%3C/tspan%3E%3C/text%3E%3C/svg%3E");
+    -webkit-mask: var(--r) repeat-x left center / auto 100%; mask: var(--r) repeat-x left center / auto 100%; }
+  main::before { margin: -1rem 0 1.8rem; }
+  main::after { margin: 2.5rem 0 0; }
+}

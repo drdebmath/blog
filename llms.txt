@@ -6,6 +6,8 @@ Posts are Markdown files. Text is marked by who wrote it: `by-human` (the author
 
 ## Posts
 
+- [The Death of Big O Notation](https://drdebmath.github.io/blog/posts/death-of-big-o.md): Big O hides a constant and a threshold. Models now shave exponents that never run; the next frontier is the constants: ultra fine-grained complexity. (published 2026-10-12, updated 2026-10-12)
+- [Mapping the Frontier Before the Models Arrive](https://drdebmath.github.io/blog/posts/mobility-matters.md): How Mobility Matters, a living survey of open problems on mobile agents, robots and particles, is built, and whom it serves: newcomers, returning researchers, and the coming model-made results. (published 2026-10-12, updated 2026-10-12)
 - [203 Errors and One Semicolon](https://drdebmath.github.io/blog/posts/semicolon.md): A CS103 recap as a three-minute Bollywood music video, made for fun in 11 hours over the midsem break: Suno, ChatGPT character sheets, a shader engine and an AI coding agent. (published 2026-10-06, updated 2026-10-06)
 - [Writing Papers When Your Co-author* Has No Memory†](https://drdebmath.github.io/blog/posts/co-author-with-no-memory.md): A checklist for writing research papers with an AI co-author: literature search, glossary, phrase bank, structure, polish and compression, and where AI helps at each step. (published 2026-09-26, updated 2026-10-06)
 - [Why did I start blogging again?](https://drdebmath.github.io/blog/posts/why-did-i-start-blogging-again.md): Why I started blogging again, what to expect here, and why this blog is called The Oblivious Robot. (published 2026-09-26, updated 2026-09-26)
