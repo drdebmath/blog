@@ -182,7 +182,7 @@ This is what I want the blog to be about. Find some examples, also research some
     <description>How Mobility Matters, a living survey of open problems on mobile agents, robots and particles, is built, and whom it serves: newcomers, returning researchers, and the coming model-made results.</description>
     <content:encoded><![CDATA[<div class="by-collab">
 
-I built Mobility Matters, a living survey of open problems on
+I built [Mobility Matters](https://drdebmath.github.io/mobility-matters/), a living survey of open problems on
 autonomous agents, robots and particles. I built it to prepare for the results that AI models are about to
 produce.
 
@@ -289,7 +289,7 @@ Because the axes are ordered, results carry over without anyone writing them dow
 setting works in every stronger one, and a lower bound for a stronger setting holds in every weaker one. Every
 setting's page lists the nearest settings in both directions.
 
-*Choosing your own branch* is the Explore page: pick a model, a problem and a value per axis, and the atlas shows
+*Choosing your own branch* is the [Explore](https://drdebmath.github.io/mobility-matters/#/explore) page: pick a model, a problem and a value per axis, and the atlas shows
 the exact setting if it exists, the algorithms of the closest weaker settings and the lower bounds of the closest
 stronger ones.
 
@@ -314,7 +314,8 @@ argument for why it works and how far it is from the best known result. Every te
 The atlas is a website and a book with the same content. The website is for finding things: a search box over
 problems, settings, open questions, essays and references; the Explore page; a timeline that dates every
 introductory result, current best and lower bound; and a progress map per problem that puts each lower bound next
-to the best upper bound. It works on a phone. The book, currently 531 pages, is
+to the best upper bound. It works on a phone. The book,
+[mobility-matters.pdf](https://drdebmath.github.io/mobility-matters/mobility-matters.pdf), currently 535 pages, is
 for reading and citing: models and their assumptions, the essays, every problem with its settings, all open
 questions, an index of assumptions, the timeline and the bibliography.
 
@@ -378,7 +379,7 @@ theorems against a setting, happens once per paper, for every reader of the atla
 <div class="by-ai">
 
 Every problem page and every setting page ends with two links: **Suggest a result** and **Report an error**. Each
-opens a GitHub issue form, with the problem and the setting already filled in. The result form asks for:
+opens a [GitHub issue form](https://github.com/drdebmath/mobility-matters/issues/new/choose), with the problem and the setting already filled in. The result form asks for:
 
 - the paper (title, authors, venue or arXiv id) and a link to the full text;
 - the problem, and the setting, or the assumptions if the setting is new;
@@ -388,7 +389,7 @@ opens a GitHub issue form, with the problem and the setting already filled in. T
 A third form suggests a new problem. Submitted results are read in the next weekly update, ahead of the papers it
 finds itself, and each claim is checked against the linked paper, not against the text of the issue. Every issue
 gets an answer: accepted, placed under *Further reading*, or declined, with the reason. Everyone whose result,
-correction or suggested problem is accepted is listed on the atlas's Acknowledgements page, with the issue that
+correction or suggested problem is accepted is listed on the atlas's [Acknowledgements](https://drdebmath.github.io/mobility-matters/#/acknowledgements) page, with the issue that
 brought it in.
 
 </div>
