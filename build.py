@@ -1,6 +1,6 @@
 """Build the static extras the in-browser renderer can't provide:
-- p/<slug>.html + p/<slug>.png: link previews (crawlers for X, WhatsApp, Slack don't run JavaScript), the PNG a card
-  in the post's own theme;
+- p/<slug>.html + p/<slug>.png: each post's own page (index.html plus the post's link-preview tags, since crawlers
+  for X, WhatsApp, Slack don't run JavaScript), the PNG a card in the post's own theme;
 - feed.xml: RSS with each post's full Markdown, and llms.txt: an index for AI agents pointing at the raw Markdown.
 
 Run after adding, editing or retitling a post:  python3 build.py
@@ -33,7 +33,12 @@ CARD = """<!doctype html><html lang="en"><head><meta charset="utf-8">
 <div class="brand">{robot}<span>{site}</span></div><h1>{title}</h1><p>{desc}</p><div class="bar"></div>
 </body></html>"""
 
-PAGE = """<!doctype html><html lang="en"><head><meta charset="utf-8">
+# Each post's own page: index.html with the post's preview tags, <base href="../"> so every relative
+# path still resolves, and <meta name="slug"> telling the renderer which post to show.
+SHELL = open(os.path.join(ROOT, "index.html")).read()
+HEAD = re.compile(r"<title>.*?<meta name=\"twitter:card\"[^>]*>\n", re.S)
+PAGE = """<base href="../">
+<meta name="slug" content="{slug}">
 <title>{title} · {site}</title>
 <meta name="description" content="{desc}">
 <meta property="og:site_name" content="{site}">
@@ -42,9 +47,7 @@ PAGE = """<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta property="og:type" content="{kind}">
 <meta property="og:url" content="{url}p/{slug}.html">
 {image}<meta name="twitter:card" content="{card}">
-<link rel="canonical" href="{url}#{slug}">
-<meta http-equiv="refresh" content="0; url=../#{slug}">
-</head><body><a href="../#{slug}">{title}</a></body></html>
+<link rel="canonical" href="{url}p/{slug}.html">
 """
 
 
@@ -82,7 +85,7 @@ def main():
                            kind="profile" if post.get("page") else "article",
                            image=f'<meta property="og:image" content="{url}p/{slug}.png">\n' if has_img else "",
                            card="summary_large_image" if has_img else "summary")
-        open(os.path.join(ROOT, "p", f"{slug}.html"), "w").write(page)
+        open(os.path.join(ROOT, "p", f"{slug}.html"), "w").write(HEAD.sub(lambda _: page, SHELL, count=1))
         print(f"p/{slug}.html" + (" + .png" if has_img else ""))
     if not browser:
         print("No Chrome/Edge found: preview pages made without images.")

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="../">
+<meta name="slug" content="personal-software">
+<title>The era of personal software · The Oblivious Robot</title>
+<meta name="description" content="In one evening, an AI coding agent and a handful of complaints turned a Pixel Watch into an iPhone accessory that feeds Apple Health. Software for an audience of one.">
+<meta property="og:site_name" content="The Oblivious Robot">
+<meta property="og:title" content="The era of personal software">
+<meta property="og:description" content="In one evening, an AI coding agent and a handful of complaints turned a Pixel Watch into an iPhone accessory that feeds Apple Health. Software for an audience of one.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://drdebmath.github.io/blog/p/personal-software.html">
+<meta property="og:image" content="https://drdebmath.github.io/blog/p/personal-software.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://drdebmath.github.io/blog/p/personal-software.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%232563eb'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Ccircle%20cx='12'%20cy='2.6'%20r='1.7'%20fill='%23fde047'%20stroke='none'/%3E%3Cpath%20d='M12%204.3V6.5M2.5%2011v3M21.5%2011v3M10%2015.5h4'/%3E%3Crect%20x='4.5'%20y='6.5'%20width='15'%20height='12'%20rx='3.5'%20fill='white'/%3E%3Ccircle%20cx='9'%20cy='12'%20r='1.4'%20fill='%232563eb'%20stroke='none'/%3E%3Ccircle%20cx='15'%20cy='12'%20r='1.4'%20fill='%232563eb'%20stroke='none'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.7/dist/katex.min.css">
+<link rel="alternate" type="application/rss+xml" title="The Oblivious Robot" href="feed.xml">
+<link rel="alternate" type="text/plain" title="For AI agents" href="llms.txt">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" id="theme">
+</head>
+<body>
+<header><a href="#" class="logo"><svg class="robot" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle class="light" cx="12" cy="2.6" r="1.7" stroke="none"/><path d="M12 4.3V6.5M2.5 11v3M21.5 11v3M10 15.5h4"/><rect x="4.5" y="6.5" width="15" height="12" rx="3.5"/><circle cx="9" cy="12" r="1.4" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg><span class="brand"><span id="site-title"></span><small id="tagline"></small></span></a><div class="header-right"><nav id="nav"></nav><button id="mode" type="button" aria-label="Toggle dark mode"></button></div></header>
+<main id="app">loading…</main>
+<footer id="footer"></footer>
+<script type="module">
+import { marked } from "https://cdn.jsdelivr.net/npm/marked@18.0.14/+esm";
+import markedKatex from "https://cdn.jsdelivr.net/npm/marked-katex-extension@5.1.13/+esm";
+marked.use(markedKatex({ throwOnError: false }));
+
+const $ = id => document.getElementById(id);
+const getJSON = async url => (await fetch(url, { cache: "no-cache" })).json();
+const [config, posts] = await Promise.all([getJSON("config.json"), getJSON("posts.json")]);
+const app = $("app");
+const bust = Date.now(); // ponytail: re-fetch theme CSS each visit; themes are tiny
+const setTheme = name => $("theme").href = `themes/${name || config.theme}.css?${bust}`;
+
+$("site-title").textContent = config.title;
+$("tagline").textContent = config.tagline ?? "";
+$("footer").innerHTML = config.footer ?? "";
+$("nav").innerHTML = (config.nav ?? []).map(l => `<a href="${l.href}">${l.label}</a>`).join("");
+
+// Legend + "?" AI-use declaration, on every page. A post can override the text with "declaration" in posts.json.
+const legend = post => `<div class="legend">
+  <div><span class="tag human">human-written</span> The author's own words (plain).</div>
+  <div><span class="tag collab">human–AI collab</span> The author's ideas, written up as prose by AI (tinted, slab serif).</div>
+  <div><span class="tag ai">AI-generated</span> Written by AI from the author's input (tinted, book serif).</div>
+  <details class="declaration by-ai"><summary title="AI use declaration" aria-label="AI use declaration">?</summary>
+    ${marked.parse(post?.declaration ?? config.declaration ?? "")}</details>
+</div>`;
+
+// Dark-mode button: forces each theme's prefers-color-scheme rules on ("dark") or off ("light"),
+// so every theme gets it for free. Choice is remembered per browser; default follows the system.
+let mode = null;
+try { mode = localStorage.getItem("mode"); } catch {}
+const systemDark = matchMedia("(prefers-color-scheme: dark)");
+const isDark = () => mode ? mode === "dark" : systemDark.matches;
+function walk(rules) {
+  for (const r of rules) {
+    if (r.styleSheet) { try { walk(r.styleSheet.cssRules); } catch {} }  // @import
+    if (!r.media || r instanceof CSSImportRule) continue;
+    r.origMedia ??= r.media.mediaText;
+    if (r.origMedia.includes("prefers-color-scheme: dark"))
+      r.media.mediaText = mode === "dark" ? "all" : mode === "light" ? "not all" : r.origMedia;
+  }
+}
+function applyMode() {
+  for (const sheet of document.styleSheets) { try { walk(sheet.cssRules); } catch {} }  // cross-origin sheets throw
+  $("mode").textContent = isDark() ? "☀" : "☾";
+  $("mode").title = isDark() ? "Switch to light mode" : "Switch to dark mode";
+}
+$("theme").addEventListener("load", applyMode);
+systemDark.addEventListener("change", applyMode);
+$("mode").onclick = () => {
+  mode = isDark() ? "light" : "dark";
+  try { localStorage.setItem("mode", mode); } catch {}
+  applyMode();
+};
+applyMode();
+
+// Each post lives at p/<slug>.html: build.py writes it as a copy of this page with <meta name="slug">
+// and <base href="../">. Old #<slug> links on the home page forward there.
+const pageSlug = document.querySelector('meta[name="slug"]')?.content;
+const postUrl = slug => `p/${slug}.html`;
+// Rewrites in-site "#<slug>" links (posts, nav, footer) to their p/<slug>.html URLs, and "#" to the home page.
+function linkPosts(root) {
+  for (const a of root.querySelectorAll('a[href^="#"]')) {
+    const slug = a.getAttribute("href").slice(1);
+    if (!slug) a.setAttribute("href", "./");
+    else if (posts.some(p => p.slug === slug)) a.setAttribute("href", postUrl(slug));
+  }
+}
+if (!pageSlug && posts.some(p => p.slug === location.hash.slice(1))) location.replace(postUrl(location.hash.slice(1)));
+linkPosts(document.querySelector("header"));
+linkPosts($("footer"));
+
+async function render() {
+  // ponytail: slug is looked up in posts.json, so only listed files are ever fetched
+  const post = posts.find(p => p.slug === (pageSlug ?? location.hash.slice(1)));
+  if (!post) {
+    document.title = config.title;
+    setTheme();
+    const list = posts.filter(p => !p.page).sort((a, b) => b.date.localeCompare(a.date));
+    app.innerHTML = (config.intro ? `<p class="intro by-human">${config.intro}</p>` : "") + legend() + `<ul class="index">${list.map(p =>
+      `<li><a href="${postUrl(p.slug)}"><time>${p.date}</time><span>${p.title}</span></a></li>`).join("")}</ul>`;
+    return;
+  }
+  const res = await fetch(`posts/${post.slug}.md`, { cache: "no-cache" });
+  const md = res.ok ? await res.text() : "*Post not found.*";
+  document.title = `${post.title.replace(/<[^>]+>/g, "")} · ${config.title}`;
+  setTheme(post.theme);
+  const shareUrl = `${config.url}p/${post.slug}.html`;
+  const plain = post.title.replace(/<[^>]+>/g, "");
+  const dates = post.date ? `<p class="dates">Published <time>${post.date}</time>` +
+    (post.updated ? ` · Last updated <time>${post.updated}</time>` : "") + `</p>` : "";
+  const discuss = post.page ? "" : ` · <a href="https://x.com/intent/post?text=${encodeURIComponent(`${plain} by ${config.x}`)}&url=${encodeURIComponent(shareUrl)}">Discuss on X</a>`;
+  app.innerHTML = `<article>${dates}<h1>${post.title}</h1>${legend(post)}${marked.parse(md)}</article>
+    <p class="share">Share: <a href="${shareUrl}">${shareUrl}</a>${discuss}</p>
+    ${post.page ? "" : `<a href="./" class="back">← all posts</a>`}`;
+  linkPosts(app);
+  // Working checklists: ticks are saved in this browser only (localStorage), per post; "Clear" resets them.
+  for (const [n, list] of app.querySelectorAll(".checklist").entries()) {
+    const key = `checklist:${post.slug}:${n}`;
+    let saved = [];
+    try { saved = JSON.parse(localStorage.getItem(key)) ?? []; } catch {}
+    const boxes = [...list.querySelectorAll("li")].map((li, i) => {
+      const box = Object.assign(document.createElement("input"), { type: "checkbox", checked: !!saved[i] });
+      const label = document.createElement("label"), text = document.createElement("span");
+      text.append(...li.childNodes);
+      label.append(box, text);
+      li.append(label);
+      return box;
+    });
+    const save = () => { try { localStorage.setItem(key, JSON.stringify(boxes.map(b => b.checked))); } catch {} };
+    boxes.forEach(b => b.onchange = save);
+    const clear = Object.assign(document.createElement("button"), { type: "button", className: "clear", textContent: "Clear" });
+    clear.onclick = () => { boxes.forEach(b => b.checked = false); try { localStorage.removeItem(key); } catch {} };
+    list.append(clear);
+  }
+  // Copy button on every code/prompt box.
+  for (const pre of app.querySelectorAll("pre")) {
+    const b = Object.assign(document.createElement("button"), { type: "button", className: "copy", textContent: "Copy" });
+    b.onclick = async () => {
+      try { await navigator.clipboard.writeText(pre.querySelector("code")?.innerText ?? pre.innerText); b.textContent = "Copied"; }
+      catch { b.textContent = "Select and copy"; }
+      setTimeout(() => b.textContent = "Copy", 1500);
+    };
+    pre.append(b);
+  }
+  scrollTo(0, 0);
+}
+if (!pageSlug) addEventListener("hashchange", () => {
+  const slug = location.hash.slice(1);
+  if (posts.some(p => p.slug === slug)) location.replace(postUrl(slug)); else render();
+});
+render();
+</script>
+</body>
+</html>

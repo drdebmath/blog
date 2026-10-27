@@ -6,6 +6,7 @@ Posts are Markdown files. Text is marked by who wrote it: `by-human` (the author
 
 ## Posts
 
+- [The era of personal software](https://drdebmath.github.io/blog/posts/personal-software.md): In one evening, an AI coding agent and a handful of complaints turned a Pixel Watch into an iPhone accessory that feeds Apple Health. Software for an audience of one. (published 2026-10-27, updated 2026-10-27)
 - [The Death of Big O Notation](https://drdebmath.github.io/blog/posts/death-of-big-o.md): Big O hides a constant and a threshold. Models now shave exponents that never run; the next frontier is the constants: ultra fine-grained complexity. (published 2026-10-12, updated 2026-10-12)
 - [Mapping the Frontier Before the Models Arrive](https://drdebmath.github.io/blog/posts/mobility-matters.md): How Mobility Matters, a living survey of open problems on mobile agents, robots and particles, is built, and whom it serves: newcomers, returning researchers, and the coming model-made results. (published 2026-10-12, updated 2026-10-12)
 - [203 Errors and One Semicolon](https://drdebmath.github.io/blog/posts/semicolon.md): A CS103 recap as a three-minute Bollywood music video, made for fun in 11 hours over the midsem break: Suno, ChatGPT character sheets, a shader engine and an AI coding agent. (published 2026-10-06, updated 2026-10-06)

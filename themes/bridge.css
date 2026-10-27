@@ -1,0 +1,53 @@
+/* PixelBridge, after the personal-software post: charcoal, watch-ring orange, and pulse lines. */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&family=JetBrains+Mono&display=swap");
+:root {
+  --bg: #f6f5f3; --fg: #1c1c1e; --muted: #6b6b70; --card: #ffffff;
+  --accent: #d9480f; --accent2: #2b2b30; --ring: #fc4c02;
+  --human: #1864ab; --collab: #c2255c; --ai: #6741d9;
+  --display: "Space Grotesk", sans-serif; --body: "Inter", sans-serif; --mono: "JetBrains Mono", monospace;
+  --strap: #ffffff; --strap-fg: #1c1c1e;
+  --size: 17px; --radius: 14px; --border: 1px solid #e3e1dc; --shadow: 0 2px 10px #0000000f;
+  --glyphs: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='400' opacity='0.3'%3E %3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E %3Cg stroke='%23fc4c02' stroke-width='5'%3E %3Cpath d='M46 44 L48 22 Q60 18 72 22 L74 44'/%3E %3Cpath d='M46 96 L48 118 Q60 122 72 118 L74 96'/%3E %3Ccircle cx='60' cy='70' r='30'/%3E %3Crect x='90' y='63' width='6' height='14' rx='3'/%3E %3C/g%3E %3Cpolyline points='38,70 49,70 54,60 61,83 67,63 71,70 82,70' stroke='%2338383d' stroke-width='4'/%3E %3Cpath d='M98 104 Q150 104 150 150' stroke='%2338383d' stroke-width='5' stroke-dasharray='0.1 11'/%3E %3Cg transform='rotate%288 150 200%29'%3E %3Crect x='128' y='158' width='44' height='84' rx='11' stroke='%2338383d' stroke-width='4.5'/%3E %3Crect x='143' y='164' width='14' height='5' rx='2.5' fill='%2338383d' stroke='none'/%3E %3Cpath d='M150 210 C138 202 140 190 150 196 C160 190 162 202 150 210 Z' fill='%23fc4c02' stroke='none'/%3E %3C/g%3E %3Cpath d='M52 280 C30 265 36 244 52 254 C68 244 74 265 52 280 Z' stroke='%23fc4c02' stroke-width='4.5'/%3E %3Cpath d='M154 318 A20 20 0 1 0 166 352 A15 15 0 1 1 154 318 Z' fill='%23fc4c02' stroke='none'/%3E %3Cpolyline points='40,346 58,362 49,371 49,333 58,342 40,358' stroke='%2338383d' stroke-width='4'/%3E %3C/g%3E%3C/svg%3E");
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121214; --fg: #ececee; --muted: #a0a0a8; --card: #1c1c20;
+    --accent: #ff7a45; --accent2: #d8d8dc; --ring: #ff6a2b;
+    --human: #74c0fc; --collab: #f783ac; --ai: #b197fc;
+    --border: 1px solid #2c2c32; --shadow: 0 2px 12px #00000066;
+    --strap: #1c1c20; --strap-fg: #f6f5f3;
+    --glyphs: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='400' opacity='0.28'%3E %3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E %3Cg stroke='%23ff6a2b' stroke-width='5'%3E %3Cpath d='M46 44 L48 22 Q60 18 72 22 L74 44'/%3E %3Cpath d='M46 96 L48 118 Q60 122 72 118 L74 96'/%3E %3Ccircle cx='60' cy='70' r='30'/%3E %3Crect x='90' y='63' width='6' height='14' rx='3'/%3E %3C/g%3E %3Cpolyline points='38,70 49,70 54,60 61,83 67,63 71,70 82,70' stroke='%23d8d8dc' stroke-width='4'/%3E %3Cpath d='M98 104 Q150 104 150 150' stroke='%23d8d8dc' stroke-width='5' stroke-dasharray='0.1 11'/%3E %3Cg transform='rotate%288 150 200%29'%3E %3Crect x='128' y='158' width='44' height='84' rx='11' stroke='%23d8d8dc' stroke-width='4.5'/%3E %3Crect x='143' y='164' width='14' height='5' rx='2.5' fill='%23d8d8dc' stroke='none'/%3E %3Cpath d='M150 210 C138 202 140 190 150 196 C160 190 162 202 150 210 Z' fill='%23ff6a2b' stroke='none'/%3E %3C/g%3E %3Cpath d='M52 280 C30 265 36 244 52 254 C68 244 74 265 52 280 Z' stroke='%23ff6a2b' stroke-width='4.5'/%3E %3Cpath d='M154 318 A20 20 0 1 0 166 352 A15 15 0 1 1 154 318 Z' fill='%23ff6a2b' stroke='none'/%3E %3Cpolyline points='40,346 58,362 49,371 49,333 58,342 40,358' stroke='%23d8d8dc' stroke-width='4'/%3E %3C/g%3E%3C/svg%3E");
+  }
+}
+
+/* Header as a watch strap with an orange edge: white in light mode, charcoal in dark. */
+header { padding: 1rem 1.4rem; border-radius: var(--radius); background: var(--strap); border: var(--border);
+         border-bottom: 4px solid var(--ring); box-shadow: var(--shadow); }
+.logo, nav a, #mode { color: var(--strap-fg); }
+h1 { color: var(--fg); letter-spacing: -0.01em; }
+h2 { width: fit-content; border-bottom: 3px solid var(--ring); padding-bottom: 2px; }
+.index a:hover, .index a:focus-visible { border-color: var(--ring); box-shadow: 0 0 0 2px var(--ring); }
+blockquote { border-left-color: var(--ring); }
+pre { border-top: 3px solid var(--ring); }
+:not(pre) > code { color: var(--accent); }
+
+/* Background glyphs (original drawings): a round watch and a phone joined by a dotted bridge, a heart,
+   a moon for sleep and a Bluetooth rune, in the gutters only. */
+html { background: var(--bg); }
+body { background: none; }
+@media (min-width: 62rem) {
+  html { --strip: min(200px, calc((100vw - var(--measure)) / 2 - 2rem));
+         background: var(--glyphs) left 1rem top 0 / var(--strip) repeat-y,
+                     var(--glyphs) right 1rem top 200px / var(--strip) repeat-y, var(--bg);
+         background-attachment: fixed; }
+}
+/* Small screens: no gutters, so a thin pulse line runs under the header and above the footer. */
+@media (max-width: 62rem) {
+  main::before, main::after { content: ""; display: block; height: 14px;
+    background: linear-gradient(var(--ring), var(--ring)) 0 50% / 100% 2px no-repeat; opacity: .7; }
+  main::before { margin: -1rem 0 1.8rem; }
+  main::after { margin: 2.5rem 0 0; }
+}
+figure { margin: 1.6rem auto; }
+figure img { border-radius: 22px; box-shadow: var(--shadow); max-width: 100%; height: auto; }
+figcaption { font-size: .88em; color: var(--muted); max-width: 34rem; margin: .7rem auto 0; text-align: left; }

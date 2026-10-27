@@ -8,7 +8,7 @@ Dr. Debasish Pattanayak's blog. Zero-build: `index.html` renders `posts/*.md` in
 
 ## Writing a post
 
-1. Add `posts/<slug>.md`. The slug is the URL: `…/blog/#<slug>`.
+1. Add `posts/<slug>.md`. The slug is the URL: `…/blog/p/<slug>.html` (old `…/blog/#<slug>` links forward there).
 2. Add an entry to `posts.json`:
 
    ```json
@@ -59,7 +59,7 @@ Other building blocks:
 
 The pages themselves need no build, but a few things can't be made in the browser:
 - **Link previews.** Crawlers (X, WhatsApp, Slack) don't run JavaScript, so each post gets `p/<slug>.html`
-  (preview tags + redirect to the post) and `p/<slug>.png` (a card in the post's theme, drawn with headless
+  (the post's own page: `index.html` plus its preview tags) and `p/<slug>.png` (a card in the post's theme, drawn with headless
   Chrome or Edge). Posts show this share link at the bottom, next to "Discuss on X".
 - **`feed.xml`**: RSS with each post's full Markdown, for feed readers and AI agents.
 - **`llms.txt`**: an index for AI agents ([llmstxt.org](https://llmstxt.org)) pointing at the raw Markdown.
