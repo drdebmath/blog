@@ -1,0 +1,56 @@
+/* Commit graph, for the post on life after GitHub Classroom: plain paper, terminal ink, a branch green and a
+   merge violet. Section headings sit on a commit dot, and the margins hold a commit graph, a `go` tag, a padlock,
+   a team, a template stamp and a clock that runs late. */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap");
+:root {
+  --bg: #f7f8f6; --fg: #1d232a; --muted: #5c6670; --card: #ffffff;
+  --accent: #1f7a4d; --accent2: #6e4fbf;
+  --human: #1f5fa8; --collab: #b4365f; --ai: #6e4fbf;
+  --display: "IBM Plex Sans", sans-serif; --body: "IBM Plex Serif", serif; --mono: "IBM Plex Mono", monospace;
+  --size: 17px; --radius: 6px; --border: 1px solid #d5dad6; --shadow: 0 1px 0 #d5dad6;
+  --ink: rgb(31 122 77 / .22);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #11161b; --fg: #e3e8ec; --muted: #9aa5ae; --card: #171e24;
+    --accent: #4fc78a; --accent2: #a88cf2;
+    --human: #7fb6f0; --collab: #f08aa8; --ai: #b9a2f5;
+    --border: 1px solid #2a333b; --shadow: 0 1px 0 #2a333b;
+    --ink: rgb(79 199 138 / .2);
+  }
+}
+
+html { background: var(--bg); }
+body { background: none; }
+/* The header ends in a branch line with a commit on it. */
+header { border-bottom: 2px solid var(--accent); padding-bottom: .6rem; position: relative; }
+header::after { content: ""; position: absolute; right: 12%; bottom: -7px; width: 8px; height: 8px;
+  border: 2px solid var(--accent); border-radius: 50%; background: var(--bg); }
+h1 { font-weight: 700; letter-spacing: -.015em; }
+/* Each section heading is a commit on the main line. */
+h2 { font-weight: 700; position: relative; padding-left: calc(.62em + 6px + .5em); }
+h2::before { content: ""; position: absolute; left: 0; top: .32em; width: .62em; height: .62em;
+  border: 3px solid var(--accent); border-radius: 50%; background: var(--bg); }
+h2::after { content: ""; position: absolute; left: calc(.31em + 2px); top: -1.1rem; height: 1.1rem; width: 2px;
+  background: var(--accent); opacity: .45; }
+:not(pre) > code { color: var(--accent); }
+pre { border-left: 3px solid var(--accent2); }
+blockquote { border-left-color: var(--accent2); }
+.index a:hover, .index a:focus-visible { box-shadow: inset 3px 0 0 var(--accent); }
+
+/* Margin glyphs (original drawings), only where the gutters are wide enough, so they never sit behind text. */
+@media (min-width: 62rem) {
+  body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: var(--ink);
+    --strip: min(200px, calc((100vw - var(--measure)) / 2 - 2rem));
+    --g: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='420' fill='none' stroke='black' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M34 18 V160'/%3E%3Cpath d='M34 52 C34 74 76 70 76 92 V112 C76 134 34 130 34 150'/%3E%3Ccircle cx='34' cy='28' r='8' fill='white'/%3E%3Ccircle cx='34' cy='88' r='8' fill='white'/%3E%3Ccircle cx='76' cy='102' r='8' fill='white'/%3E%3Ccircle cx='34' cy='158' r='8' fill='white'/%3E%3Cpath d='M112 34 H156 L176 54 L156 74 H112 Z'/%3E%3Ccircle cx='123' cy='54' r='4'/%3E%3Ctext x='134' y='61' font-family='monospace' font-size='18' font-weight='700' fill='black' stroke='none'%3Ego%3C/text%3E%3Crect x='124' y='150' width='44' height='36' rx='5'/%3E%3Cpath d='M133 150 V138 A13 13 0 0 1 159 138 V150'/%3E%3Cpath d='M146 163 V172'/%3E%3Ccircle cx='46' cy='222' r='9'/%3E%3Cpath d='M30 254 C30 238 62 238 62 254'/%3E%3Ccircle cx='80' cy='216' r='11'/%3E%3Cpath d='M60 256 C60 234 100 234 100 256'/%3E%3Ccircle cx='114' cy='222' r='9'/%3E%3Cpath d='M98 254 C98 238 130 238 130 254'/%3E%3Ccircle cx='80' cy='240' r='52' stroke-dasharray='4 9'/%3E%3Crect x='112' y='300' width='54' height='64' rx='3'/%3E%3Cpath d='M120 316 H150 M120 330 H158 M120 344 H140'/%3E%3Cpath d='M154 300 V312 H166'/%3E%3Ccircle cx='50' cy='356' r='28'/%3E%3Cpath d='M50 338 V356 L64 364'/%3E%3Cpath d='M78 326 L90 314 M84 336 L98 330'/%3E%3C/svg%3E");
+    -webkit-mask: var(--g) left 1rem top 40px / var(--strip) repeat-y, var(--g) right 1rem top 250px / var(--strip) repeat-y;
+    mask: var(--g) left 1rem top 40px / var(--strip) repeat-y, var(--g) right 1rem top 250px / var(--strip) repeat-y; }
+}
+/* Small screens: no room beside the text, so a branch line with commits runs under the header and above the footer. */
+@media (max-width: 62rem) {
+  main::before, main::after { content: ""; display: block; height: 24px; background: color-mix(in srgb, var(--accent), transparent 35%);
+    --r: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='24' fill='none' stroke='black' stroke-width='3'%3E%3Cpath d='M0 12 H120'/%3E%3Ccircle cx='30' cy='12' r='6' fill='white'/%3E%3Cpath d='M60 12 C70 12 70 4 80 4 H96 C104 4 104 12 112 12'/%3E%3Ccircle cx='88' cy='4' r='3' fill='black'/%3E%3C/svg%3E");
+    -webkit-mask: var(--r) repeat-x left center / auto 100%; mask: var(--r) repeat-x left center / auto 100%; }
+  main::before { margin: -1rem 0 1.8rem; }
+  main::after { margin: 2.5rem 0 0; }
+}

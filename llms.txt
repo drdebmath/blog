@@ -6,6 +6,7 @@ Posts are Markdown files. Text is marked by who wrote it: `by-human` (the author
 
 ## Posts
 
+- [Building a classroom from scratch in GitHub](https://drdebmath.github.io/blog/posts/after-github-classroom.md): GitHub Classroom shut down, so a 530-student C++ lab runs on secret per-student teams, template repositories, issues and a go label. Why a cron timer could not be trusted, and the limit nobody reports. (published 2026-10-27, updated 2026-10-27)
 - [The era of personal software](https://drdebmath.github.io/blog/posts/personal-software.md): In one evening, an AI coding agent and a handful of complaints turned a Pixel Watch into an iPhone accessory that feeds Apple Health. Software for an audience of one. (published 2026-10-27, updated 2026-10-27)
 - [The Death of Big O Notation](https://drdebmath.github.io/blog/posts/death-of-big-o.md): Big O hides a constant and a threshold. Models now shave exponents that never run; the next frontier is the constants: ultra fine-grained complexity. (published 2026-10-12, updated 2026-10-12)
 - [Mapping the Frontier Before the Models Arrive](https://drdebmath.github.io/blog/posts/mobility-matters.md): How Mobility Matters, a living survey of open problems on mobile agents, robots and particles, is built, and whom it serves: newcomers, returning researchers, and the coming model-made results. (published 2026-10-12, updated 2026-10-12)
